@@ -106,6 +106,16 @@ public class string {
 	 float num3 = (float) 3.14;//3.14는 접미사가 없기 때문에 double
 	 */
 
+	/* 산술선연사자
+	 	정수 / 정수 = 정수 (소수점이 버려질 수 있음)★★★
+	 	정수 / 실수 = 실수
+	 	실수 / 정수 = 실수
+	 	실수 / 실수 = 실수
+	 */
 
+	
+	public static void main(String[] args) {
+		
 
+	}
 }
