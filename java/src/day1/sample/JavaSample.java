@@ -1,6 +1,6 @@
 package day1.sample;
 
-public class JavaSample {0
+public class JavaSample {
 	
 	// 한줄 주석 : 코드에 영향이 없는 설명 문구
 	/* 여러줄 주석
