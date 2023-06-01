@@ -1,4 +1,6 @@
-package src.day3.homework;
+package day3.homework;
+
+import java.util.*;
 
 public class Ex6 {
 
@@ -15,16 +17,17 @@ public class Ex6 {
 		*/
 		
 
-		Scanner sc = new Scanner(system.in);
+		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("성별을 입력하시오");
 		
-		int sc = sc.nextInt();
-		
-		if(sc == m) {
+		int sr = sc.nextInt();
+		char ch1 = 'm';
+		char ch2 = 'w';
+		if(sr == ch1) {
 			System.out.println("남자입니다");
 		}
-		if(sc == w) {
+		if(sr == ch2) {
 			System.out.println("여성입니다");
 		}
 		sc.close();

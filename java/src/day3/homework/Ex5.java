@@ -1,8 +1,7 @@
-package src.day3.homework;
+package day3.homework;
 
-import java.utll.Scanner
+import java.util.*;
 
-import src.day3.operator.String;
 
 public class Ex5 {
 
@@ -18,23 +17,23 @@ public class Ex5 {
 		Are you a women? true
 		*/
 
-		Scanner sc = new Scanner(system.in);
+		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("성별을 입력하시오");
+	
 		
-		
-		int sc = sc.nextInt();
-		
+		int num1 = sc.nextInt();
+		char ch = 'm';
 		String str1;
-		str1 = sc == m ? "true" : "false";
+		str1 = num1 == ch ? "true" : "false";
 		
 				
 		System.out.println("당신은 여성입니까?" + str1 );
 		
-		int sr = sr.nextInt();
+		int sr = sc.nextInt();
 		
 		String str2;
-		str2 = sr == m ? "true" : "false";
+		str2 = sr == ch ? "true" : "false";
 		
 		System.out.println("당신은 여성입니까? " + str2);
 		
