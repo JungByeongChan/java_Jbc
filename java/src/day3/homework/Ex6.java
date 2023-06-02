@@ -17,7 +17,9 @@ public class Ex6 {
 		*/
 		
 
-		Scanner sc = new Scanner(System.in);
+		/*
+		 * Scanner sc = new Scanner(System.in);
+		 
 		
 		System.out.println("성별을 입력하시오");
 		
@@ -30,7 +32,28 @@ public class Ex6 {
 		if(sr == ch2) {
 			System.out.println("여성입니다");
 		}
+		
 		sc.close();
+		
+		*/
+		
+		char gender;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("input gender : ");
+		gender = sc.next().charAt(0);
+		String result = "";
+		if(gender == 'm') {
+			//System.out.println("Are you a women?" + "man");
+			result = "man";
+		}
+		if(gender == 'w') {
+			//System.out.println("Are you a women?" + "women");
+			result = "women";
+		}
+		System.out.println("Are you a women?" + result);
+		
+		sc.close();
+		
 
 	}
 

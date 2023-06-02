@@ -3,7 +3,7 @@ package day3.homework;
 import java.util.Scanner;
 
 
-public class Ex5 {
+public class Ex5solution {
 
 	public static void main(String[] args) {
 		/* 성별(M:남성,W:여성)를 입력받아 여성인지 확인하는 코드를 작성하세요. 조건 연산자 이용
@@ -40,12 +40,12 @@ public class Ex5 {
 		sc.close();
 		*/
 		
-		char gender;
+		String gender;
 		Scanner sc = new Scanner(System.in);
 		System.out.println("input gender : ");
-		gender = sc.next().charAt(0);
-		boolean result = gender == 'W' ?  true : false;
-		
+		gender = sc.next();
+		boolean result = gender.equals("w") ?  true : false;
+		// gender.next().charart(0); 은 문자열과 문자열을 비교할수 없기 때문에 equals를 써야함
 		System.out.println("Are you a women? " + result);
 		
 		sc.close();
