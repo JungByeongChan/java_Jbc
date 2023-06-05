@@ -6,37 +6,32 @@ public class ScoreAverageEx {
 
 	public static void main(String[] args) {
 		/*
-		세 변의 길이를 정수로 입력받아 세 변으로 삼각형을 만들 수 있는지 확인하는 코드를 작성하세요.
-		(package : day4.homework, file : TriangleEx)
-		세 변 중 작은 두 변의 길이의 합이 큰 변보다 커야 삼각형을 만들 수 있다.
-		input 3 integer num : 
-		1 2 3 
-		Unable to create triangle.
-		input 3 integer num : 
-		2 2 3 
-		Able to create triangle.
-		*/
+		 * 국어, 영어, 수학 성적을 입력받아 평균을 출력하는 코드를 작성하세요.
+		 
+		 (package : day4.homework, file : ScoreAverageEx)성적은 정수.
+		 */
 		
-		Scanner sr = new Scanner(System.in);
-		System.out.println("정수를 입력하세요.");
 		
-		int num1 = sr.nextInt();
+		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("정수를 입력하세요.");
-		int num2 = sr.nextInt();
+		System.out.print("input your korean score : ");
 		
-		System.out.println("정수를 입력하세요.");
-		int num3 = sr.nextInt();
+		int korean = sc.nextInt();
 		
-		if((num1 + num2) >= num3) {
-			System.out.println(num1 + "+" + num2 + "=" + num3 + " 따라서" + " 삼각형이 만들어질 수 있습니다.");
-		}else {
-			System.out.println(num1 + "+" + num2 + "=" + num3 + " 따라서" + " 삼각형이 만들어질 수 없습니다.");
-		}
+		System.out.print("input your english score : ");
 		
-		String str = (num1 + num2) >= num3 ? "가능합니다" : "불가능합니다" ;
+		int english = sc.nextInt();
 		
-		System.out.println(num1 + "+" + num2 + "=" + num3 + " 따라서" + str);
+		System.out.print("input your math score : ");
+		
+		int math = sc.nextInt();
+		
+		String str =  "" + (korean + english + math) / 3.0 ;
+		
+		System.out.print(str);
+		
+		System.out.print((korean + english + math) / 3.0);
+
 
 	}
 
