@@ -16,6 +16,15 @@ public class TeamLeaderEx {
 		student number 6 is the team leader.
 		*/
 		
+		int min = 1, max = 30;
+		int random = (int)(Math.random() * (max - min + 1) + min);
+		
+		System.out.println(random);
+		
+		String leader = random % 3 == 0 ? "Team ledaer" : "member";
+		
+		System.out.println(random + " 번의 학생은 " + leader + " 이다"); 
+		
 			
 
 	}

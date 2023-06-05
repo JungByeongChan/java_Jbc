@@ -25,13 +25,18 @@ public class PrimeNumberEx {
 		int count = 0;
 		
 		//반복문, i는 1부터 num까지 1씩 증가
-		while(i++ <= num) {
+		while(i <= num) {
 			//i가 num의 약수이면 약수의 개수 count를 1 증가
 			if(num % i == 0) {
 				count++;
 				
 			}
+			
+			i++;
 		}
+		
+		
+		
 			//count가 2이면 소수라고 출력, 아니면 소수가 아님이라고 출력
 		System.out.println(count == 2 ? " prime number" : "  not prime number");
 		
