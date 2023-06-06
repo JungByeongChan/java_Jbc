@@ -15,15 +15,29 @@ public class TeamLeaderEx {
 		6
 		student number 6 is the team leader.
 		*/
-		
 		int min = 1, max = 30;
 		int random = (int)(Math.random() * (max - min + 1) + min);
 		
 		System.out.println(random);
 		
-		String leader = random % 3 == 0 ? "Team ledaer" : "member";
 		
-		System.out.println(random + " 번의 학생은 " + leader + " 이다"); 
+		
+		switch(random) {
+			case 3,6,9,12,15,18,21,24,27,30 :
+				System.out.println(random + " 번의 학생은 " + "Team leader" + " 이다");
+			break;
+			default :
+				System.out.println(random + " 번의 학생은 " + "member" + " 이다");
+		
+		}
+		
+		
+	
+		System.out.println(random);
+		
+		String leader1 = random % 3 == 0 ? "Team ledaer" : "member";
+		
+		System.out.println(random + " 번의 학생은 " + leader1 + " 이다"); 
 		
 			
 
