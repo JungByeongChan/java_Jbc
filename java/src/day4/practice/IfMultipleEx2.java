@@ -14,28 +14,28 @@ public class IfMultipleEx2 {
 		
 		System.out.println("input number :");
 		
-		int A = sc.nextInt();
+		int num1 = sc.nextInt();
 		
-		if(A % 6 == 0) {
-			System.out.println(A + " = " + "" + "multiple of 6");
-		}else if(A % 2 == 0) {
-			System.out.println(A + " = " + "" + "multiple of 2");
-		}else if(A % 3 == 0) {
-			System.out.println(A + " = " + "" + "multiple of 3");
+		if(num1 % 6 == 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 6");
+		}else if(num1 % 2 == 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 2");
+		}else if(num1 % 3 == 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 3");
 		}
 		else {
-			System.out.println(A + " = " + "" + "not multiple of 2,3,6");
+			System.out.println(num1 + " = " + "" + "not multiple of 2,3,6");
 		}
 		/* 아래도 가능 // 6의 배수가 아닌 2의 배수만 찾기 위해 2의배수이지만 3의 배수가 아닌 정수를 확인
-		 	if(A % 2 == 0 && num % 3 != 0) {
-			System.out.println(A + " = " + "" + "multiple of 2");
-		}else if(A % 3 == 0 && num % 2 != 0) {
-			System.out.println(A + " = " + "" + "multiple of 3");
-		}else if(A % 6 == 0) {
-			System.out.println(A + " = " + "" + "multiple of 6");
+		 	if(num1 % 2 == 0 && num % 3 != 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 2");
+		}else if(num1 % 3 == 0 && num % 2 != 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 3");
+		}else if(num1 % 6 == 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 6");
 		}
 		else {
-			System.out.println(A + " = " + "" + "not multiple of 2,3,6");
+			System.out.println(num1 + " = " + "" + "not multiple of 2,3,6");
 		}
  
 		 */

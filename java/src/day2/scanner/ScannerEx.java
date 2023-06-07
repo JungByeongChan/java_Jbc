@@ -11,12 +11,12 @@ public class ScannerEx {
 		
 		System.out.println("정수를 입력해주세요.");
 		
-		int A = sc.nextInt();//정수를 입력받음
-		System.out.println(A);
+		int num1 = sc.nextInt();//정수를 입력받음
+		System.out.println(num1);
 		
 		System.out.println("실수를 입력해주세요.");
-		double B = sc.nextDouble();//실수를 입력 받음
-		System.out.println(B);
+		double num2 = sc.nextDouble();//실수를 입력 받음
+		System.out.println(num2);
 		
 		System.out.println("문자열1을 입력하세요.");
 		sc.nextLine();//

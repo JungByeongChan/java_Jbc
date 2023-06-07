@@ -6,15 +6,15 @@ public class NestedIfEx {
 		/*
 		 * 2,3,6의 배수 판별 예제
 		 * (Day4.practice패키지에 IfMultipleEx2 문제)
-		if(A % 6 == 0) {
-			System.out.println(A + " = " + "" + "multiple of 6");
-		}else if(A % 2 == 0) {
-			System.out.println(A + " = " + "" + "multiple of 2");
-		}else if(A % 3 == 0) {
-			System.out.println(A + " = " + "" + "multiple of 3");
+		if(num1 % 6 == 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 6");
+		}else if(num1 % 2 == 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 2");
+		}else if(num1 % 3 == 0) {
+			System.out.println(num1 + " = " + "" + "multiple of 3");
 		}
 		else {
-			System.out.println(A + " = " + "" + "not multiple of 2,3,6");
+			System.out.println(num1 + " = " + "" + "not multiple of 2,3,6");
 		}
 		*/
 		int num = 5;

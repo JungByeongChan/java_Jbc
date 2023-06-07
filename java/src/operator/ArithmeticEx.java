@@ -3,20 +3,20 @@ package operator;
 public class ArithmeticEx {
 
 	public static void main(String[] args) {
-		int A = 1, B = 2;
-		int sum = A + B;
-		int sub = A - B;
-		int mul = A * B;
-		double div = (double)A / B;// 1/2의 결과가 0이기에, 1.0/2로 바꾸어 0.5가 나오게 해야한다.
-		int mod = A % B;
+		int num1 = 1, num2 = 2;
+		int sum = num1 + num2;
+		int sub = num1 - num2;
+		int mul = num1 * num2;
+		double div = (double)num1 / num2;// 1/2의 결과가 0이기에, 1.0/2로 바꾸어 0.5가 나오게 해야한다.
+		int mod = num1 % num2;
 		
 	
 		
-		System.out.println("" + A + '+' + B + "=" + sum);
-		System.out.println("" + A + '-' + B + "=" + sub);
-		System.out.println("" + A + '*' + B + "=" + mul);
-		System.out.println("" + A + '/' + B + "=" + div);
-		System.out.println("" + A + '%' + B + "=" + mod);
+		System.out.println("" + num1 + '+' + num2 + "=" + sum);
+		System.out.println("" + num1 + '-' + num2 + "=" + sub);
+		System.out.println("" + num1 + '*' + num2 + "=" + mul);
+		System.out.println("" + num1 + '/' + num2 + "=" + div);
+		System.out.println("" + num1 + '%' + num2 + "=" + mod);
 		
 		
 		

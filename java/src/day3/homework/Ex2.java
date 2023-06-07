@@ -23,17 +23,17 @@ public class Ex2 {
 		System.out.println("당신의 성적은 몇점입니까?");
 		
 		
-		int A = sc.nextInt();
+		int num1 = sc.nextInt();
 		
-		System.out.println("Do you pass " + A + "points?" + (A >= 60));
+		System.out.println("Do you pass " + num1 + "points?" + (num1 >= 60));
 		
 		System.out.println("당신의 성적은 몇점입니까?");
 		
-		int B = sc.nextInt();
-		String str = B >= 60 ? "pass" : "fall";
+		int num2 = sc.nextInt();
+		String str = num2 >= 60 ? "pass" : "fall";
 		
 		
-		System.out.println("Do you pass " + A + "points?" + str);
+		System.out.println("Do you pass " + num1 + "points?" + str);
 		
 		sc.close();
 	}
