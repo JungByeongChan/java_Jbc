@@ -88,10 +88,10 @@ public class string {
 	 * 바이트가 작은 자료형을 보다 큰 자료형으로 변하는 경우 자동 자료형 변환이 일어남
 	 * 
 	 byte num = 1;
-	 int B = A;
+	 int num2 = num1;
 	 char ch = 'A';
-	 B = ch;
-	 double C = B;
+	 num2 = ch;
+	 double num3 = num2;
 	 long num4 = 1;//1은 int
 	 */
 
@@ -100,10 +100,10 @@ public class string {
 	 * 현재 자료형의 바이트보다 작은 바이트를 가진 자료형으로 변환하는 경우
 	 * 자동 자료형 변환이 일어나지만 필요에 의한 경우 : 나누기 할 때
 	 * 변환하고자 하는 변수/리터럴/상수 앞에 (변환하려는 자료형)을 써 줌
-	 int A = (int)3.14; - 3만 저장이됨
-	 int B = (int)123L;//접미사 L이 붙으면 숫자 크기에 상관없이 long 타입
+	 int num1 = (int)3.14; - 3만 저장이됨
+	 int num2 = (int)123L;//접미사 L이 붙으면 숫자 크기에 상관없이 long 타입
 	 double res = (double) 1 / 2;
-	 float C = (float) 3.14;//3.14는 접미사가 없기 때문에 double
+	 float num3 = (float) 3.14;//3.14는 접미사가 없기 때문에 double
 	 */
 
 	/* 산술선연사자
