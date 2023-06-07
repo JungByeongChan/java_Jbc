@@ -12,23 +12,23 @@ public class Ex2 {
 
 		System.out.println("정수를 입력하시오");
 
-		int A = sc.nextInt();
+		int num1 = sc.nextInt();
 
 		System.out.println("정수를 입력하시오");
 
-		int B = sc.nextInt();
+		int num2 = sc.nextInt();
 
 		
 
-		System.out.println(A + B);
+		System.out.println(num1 + num2);
 
-		System.out.println(A - B);
+		System.out.println(num1 - num2);
 
-		System.out.println(A * B);
+		System.out.println(num1 * num2);
 
-		System.out.println((double)A / B);
+		System.out.println((double)num1 / num2);
 
-		System.out.println(A % B);
+		System.out.println(num1 % num2);
 		 */
 		System.out.println("두 정수를 입력하시오");// 스캐너 생성
 		Scanner sc = new Scanner(System.in);// 정수 입력 
@@ -46,7 +46,7 @@ public class Ex2 {
 		System.out.println(num1 + "*" + num2 + "=" + mul);
 		System.out.println(num1 + "/" + num2 + "=" + div);
 		System.out.println(num1 + "%" + num2 + "=" + mod);
-		//System.out.println(A + "%" + B + "=" + (A % B); 도 가능
+		//System.out.println(num1 + "%" + num2 + "=" + (num1 % num2); 도 가능
 		// (* / %)는 (+ -) 보다 우선순위가 높기때문에 ()가 필요없지만, (+ -)는 우선순위가 낮기때문에 ()가 필요하다.
 				
 		sc.close();
