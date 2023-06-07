@@ -23,16 +23,16 @@ public class Ex1 {
 		System.out.println("당신의 성적은 몇점입니까?");
 		
 		
-		int num1 = sc.nextInt();
+		int A = sc.nextInt();
 		
-		System.out.println("Do you pass " + num1 + "points?" + (num1 >= 60));
+		System.out.println("Do you pass " + A + "points?" + (A >= 60));
 		
 		System.out.println("당신의 성적은 몇점입니까?");
 		
-		int num2 = sc.nextInt();
-		boolean result = num2 >= 60;
+		int B = sc.nextInt();
+		boolean result = B >= 60;
 		
-		System.out.println("Do you pass " + num1 + "points?" + result);
+		System.out.println("Do you pass " + A + "points?" + result);
 		
 		sc.close();
 		

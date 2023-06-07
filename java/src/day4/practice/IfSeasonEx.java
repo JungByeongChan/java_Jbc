@@ -18,9 +18,11 @@ public class IfSeasonEx {
 		System.out.println("input month : ");
 		
 		month = sc.nextInt();
+		
+		
 		/*
 		
-		int spring = (3,4,5);
+		int spring = 3,4,5;
 		int summer = (6,7,8);
 		int fall = (9,10,11);
 		int winter = (12,1,2);

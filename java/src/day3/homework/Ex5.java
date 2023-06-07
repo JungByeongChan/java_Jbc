@@ -22,10 +22,10 @@ public class Ex5 {
 		System.out.println("성별을 입력하시오");
 	
 		
-		int num1 = sc.nextInt();
+		int A = sc.nextInt();
 		char ch = 'm';
 		String str1;
-		str1 = num1 == ch ? "true" : "false";
+		str1 = A == ch ? "true" : "false";
 		
 				
 		System.out.println("당신은 여성입니까?" + str1 );

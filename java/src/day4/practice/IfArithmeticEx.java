@@ -11,12 +11,12 @@ public class IfArithmeticEx {
 		// 1 ? 2 -> ? is nat operator!
 		
 		/*
-		 산술연산자 : op 두 정수 : num1 num2
-		 op가 +이면 num1 + num2를 출력하고
-		 op가 -이면 num1 - num2를 출력하고
-		 op가 *이면 num1 * num2를 출력하고
-		 op가 /이면 num1 / num2를 출력하고
-		 op가 %이면 num1 % num2를 출력하고
+		 산술연산자 : op 두 정수 : A B
+		 op가 +이면 A + B를 출력하고
+		 op가 -이면 A - B를 출력하고
+		 op가 *이면 A * B를 출력하고
+		 op가 /이면 A / B를 출력하고
+		 op가 %이면 A % B를 출력하고
 		 op가 산술연산자가 아니면 op is not arithmetic operator!를 출력
 		 
 		  
@@ -26,39 +26,39 @@ public class IfArithmeticEx {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("input 2 nums and arithmatic operator(ex : 1 + 2) : ");
 		
-		int num1 = sc.nextInt();
-		int num2 = sc.nextInt();
+		int A = sc.nextInt();
+		int B = sc.nextInt();
 		char op1 = sc.next().charAt(0);
 		
 		if(op1 == '+') {
-			String str1 = "" + num1 + op1 + num2 + "=" + (num1 + num2);
+			String str1 = "" + A + op1 + B + "=" + (A + B);
 			
 			System.out.println(str1);
 		}
 
 		else if(op1 == '-') {
 
-			String str2 = "" + num1 + op1 + num2 + "=" + (num1 - num2);
+			String str2 = "" + A + op1 + B + "=" + (A - B);
 			
 			System.out.println(str2);
 				
 		}
 		
 		else if(op1 == '*') {
-			String str3 = "" + num1 + op1 + num2 + "=" + ((double)num1 * num2);
+			String str3 = "" + A + op1 + B + "=" + ((double)A * B);
 			
 			System.out.println(str3);
 	
 		}
 		else if(op1 == '/') {
-			String str4 = "" + num1 + op1 + num2 + "=" + (num1 / num2);
+			String str4 = "" + A + op1 + B + "=" + (A / B);
 			
 			System.out.println(str4);
 	
 		}
 		else if(op1 == '%') {
 
-			String str5 = "" + num1 + op1 + num2 + "=" + (num1 % num2);
+			String str5 = "" + A + op1 + B + "=" + (A % B);
 			
 			System.out.println(str5);
 	

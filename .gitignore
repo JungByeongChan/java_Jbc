@@ -23,3 +23,5 @@
 hs_err_pid*
 replay_pid*
 java/.classpath
+java/src/day2/variable/StringEx2.java
+java/src/day6/whileex/test.java

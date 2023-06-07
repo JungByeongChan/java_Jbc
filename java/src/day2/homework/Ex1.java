@@ -17,16 +17,16 @@ public class Ex1 {
 
 		System.out.println(str);
 		*/
-		int num1, num2;
+		int A, B;
 		char opertator;
 		
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("두 정수와 산술연산자를 입력하세요 (예:1 + 2)");
-		num1 = sc.nextInt();
+		A = sc.nextInt();
 		opertator = sc.next().charAt(0);
-		num2 = sc.nextInt();
-		System.out.println("" + num1 + opertator + num2);
+		B = sc.nextInt();
+		System.out.println("" + A + opertator + B);
 		
 		sc.close();
 		
