@@ -143,6 +143,18 @@ public class string {
 	 */
 	
 	
-	
-	
+	/*
+	반환타입 함수명(매개변수들){
+		구현;
+		return 값; // 반환타입이있는경우
+	}
+		음료수 음료수자판기(int 돈, String 메뉴){
+	if(메뉴.equals("사이다")){
+		return 사이다;
+	}else if(메뉴.equals("콜라")){
+		return 콜라;
+	return null;
+	*/
 }
+	
+
