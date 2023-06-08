@@ -1,5 +1,7 @@
 package day6.homework;
 
+import java.util.Scanner;
+
 public class DisjointEx {
 
 	public static void main(String[] args) {
@@ -12,6 +14,39 @@ public class DisjointEx {
 		 * 
 		 * 
 		 * 		 */
+		
+		int num1, num2;
+		Scanner sc = new Scanner(System.in);
+		int i = 1;
+		int gcd = 1;
+		
+		System.out.println("input 2 number : ");
+		num1 = sc.nextInt();
+		num2 = sc.nextInt();
+		
+		while(i <= num1) {
+			if(num1 % i == 0 && num2 % i == 0) {
+				gcd = i;
+			}
+			i++;
+			
+		}
+		switch(gcd) {
+		case 1:
+			System.out.println(num1 + " and " + num2 + " is a Disjoints");
+			break;
+			default:
+				System.out.println(num1 + " and " + num2 + " is not Disjoints");
+			
+		}
+		String result = gcd == 1 ? " is a Disjoints" : " is not Disjoints";
+		
+		System.out.println(num1 + " and " + num2 + result);
+		
+		
+		
+		
+		sc.close();
 
 	}
 
