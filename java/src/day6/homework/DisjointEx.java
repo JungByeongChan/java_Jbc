@@ -43,6 +43,12 @@ public class DisjointEx {
 		
 		System.out.println(num1 + " and " + num2 + result);
 		
+		if(gcd == 1) {
+			System.out.println(num1 + " and " + num2 + " is a Disjoints");
+		}else {
+			System.out.println(num1 + " and " + num2 + " is not Disjoints");
+		}
+		
 		
 		
 		
