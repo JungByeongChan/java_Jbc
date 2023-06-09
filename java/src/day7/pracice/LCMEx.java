@@ -26,14 +26,14 @@ public class LCMEx {
 		
 		int num1, num2;
 		int i;
-		int LCM;
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println(" input number : ");
 		num1 = sc.nextInt();
 		num2 = sc.nextInt();
 		
 		i = 1;
-		LCM = 1;
+		
 		// 방법 1
 		for( ;  ; i++ ) {
 			if(i % num1 == 0 && i % num2 == 0) {
