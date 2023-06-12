@@ -29,15 +29,15 @@ public class Ex {
 			 
 			 
 		 }
-		 /*
-		 char ch = 'a', end;
-		 for(end = 'a'; end <= 'z'; end++) {
-			 for(ch = 'a'; ch <= end; ch++) {
-				 System.out.print(ch);
+		 
+		 char ch1 = 'a', end1;
+		 for(end1 = 'a'; end1 <= 'z'; end1++) {
+			 for(ch1 = 'a'; ch1 <= end1; ch1++) {
+				 System.out.print(ch1);
 			 }
 			 System.out.println();
 		 }
-		 */
+		 
 		 
 
 	}

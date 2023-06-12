@@ -47,5 +47,12 @@ public class MethodMonthEx {
 		}
 		
 	}
+	
+	/** 월이 주어지면 주어진 월의 영문명을 알려주는 메서드
+	 * 매개변수 : 월 => int month
+	 * 리턴타입 : 월의 영문 => String
+	 * 메서드명 : getMonth
+	 */
+	
 
 }
