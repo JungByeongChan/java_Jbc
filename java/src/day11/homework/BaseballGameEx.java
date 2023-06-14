@@ -1,5 +1,7 @@
 package day11.homework;
 
+import java.util.Scanner;
+
 public class BaseballGameEx {
 
 	public static void main(String[] args) {
@@ -14,6 +16,43 @@ public class BaseballGameEx {
 		  	
 		  	
 		 */
+		
+		int min = 1; int max = 9;
+		int list[] = new int[3];
+		
+		
+		boolean cheaklist[] = new boolean[10];
+		for(int i = 0 ; i < 3 ; ) {
+			int random = (int)(Math.random() * (max - min + 1) - min );
+			if(!cheaklist[random]){
+				//random을 배열에 저장.
+				list[i] = random;
+				//i를 증가. 
+				i++;
+				//cheaklist배열에 random번지에 있는 값을 true로 변경
+				cheaklist[random] = true;
+			}
+			
+		}
+		for(int i = 0; i < 3 ; i ++) {
+			System.out.print(list[i]);
+		}
+		System.out.println("\n");
+		
+		
+		
+		
+		
+		Scanner sc = new Scanner(System.in);
+		
+		
+		System.out.println("int put number :");
+		
+		int num = sc.nextInt();
+		
+		
+		
+		
 
 	}
 
