@@ -1,5 +1,9 @@
 package day12.homework;
 
+import java.util.Scanner;
+
+import array.Array;
+
 public class LottoEx {
 
 	public static void main(String[] args) {
@@ -16,6 +20,62 @@ public class LottoEx {
 		  losing ticket!(꽝)
 		 */
 
+		
+		Scanner sc = new Scanner(System.in);
+		
+		
+		
+		
+		int number[] = new int[6];		
+		int user[] = new int[6];
+		int max = 100; int min = 1;
+		int bonus = (int)(Math.random() * (max - min + 1) - min);
+		Array.createRandomArray(min, max, number);
+		Array.printArray(number);
+		Array.printArray(user);
+		System.out.println(bonus);
+		
+		do {
+			//사용자가 숫자 6개를 입력
+			System.out.println("user : ");
+			for(int i = 0; i < user.length; i++) {
+				user[i] = sc.nextInt();
+			}
+			//사용자 입력 체크
+			// 1 1 3 | 1 1 3
+			if(Array.arrayCheck(user)) {
+				System.out.println("You must not enter the same number!");
+				continue;
+			}
+			
+			//판별
+			
+			// 입력한 번호가 당첨이 판별
+			
+			
+			// 보너스가 맞았는지 판별
+			
+			
+			
+			// 등수 출력
+			
+		}while( ); // 종료시점
+		System.out.println("Good");
+		
+		
+		sc.close();
 	}
+		
+		
+		
+		
+		
+		
+		
+}
 
+
+class atari{
+	
+	
 }
