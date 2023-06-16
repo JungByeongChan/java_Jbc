@@ -1,23 +1,26 @@
 package day12.practice;
 
-public class Word {
+import lombok.Data;
+
+@Data // getter, setter, toString, equals를 추가
+public class Word2 {
 	//멤버 변수
 	private String title;
 	private String meaning[];
 	private int meaningCount;
 	//생성자
-	public Word(String title, String meaning) {
+	public Word2(String title, String meaning) {
 		this.title = title;
 		this.meaning = new String[5];//기본 5개의 뜻을 저장할 수 있도록.
 		this.meaning[0] = meaning;
 		meaningCount++;
 	}
-	public Word(String title){
+	public Word2(String title){
 		this.title = title;
 		this.meaning = new String[5];//기본 5개
 	}
 	
-	public Word(Word w) {
+	public Word2(Word2 w) {
 		this.title = w.title;
 		this.meaning = new String[5];//기본 5개
 		for(int i = 0 ; i < w.meaningCount; i++) {
@@ -77,4 +80,31 @@ public class Word {
 		//제거 됐으면 뜻 개수를 하나 줄임
 		meaningCount--;
 	}
+	//getter
+	public String getTitle() {
+		return title;
+	}
+	
+	//setter
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	/** 수정할 뜻의 번지와 수정할 뜻이 주어지면 뜻을 수정하고 수정 여부를 알려주는 메서드
+	 * 매개변수 : 수정할 뜻의 번호, 수정할 뜻 => int maeningNum, String meaning
+	 * 리턴타입 : 수정여부 => boolean
+	 * 메서드명 : updateMeaning
+	 * @param maeningIndex
+	 * @param meaning2
+	 * @return
+	 */
+	public boolean updateMeaning(int meaningNum, String meaning) {
+		// 수정할 뜻의 번지가 잘못된 경우
+		if(meaningNum > meaningCount || meaningNum <= 0) {
+			return false;
+		}
+		//meaningNum은 1부터이고 번지는 0부터이기 때문에 빼기 1을 한다.
+		this.meaning[meaningNum - 1] = meaning;
+		return false;
+	}
+	
 }
