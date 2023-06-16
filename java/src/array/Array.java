@@ -54,7 +54,7 @@ public class Array {
 		if(max < min) {
 			int tmp = max;
 			max = min;
-			min = max;
+			min = tmp;
 		}
 		
 		//배열이 생성되어 있지 않으면(배열이 null이면) 메서드 종료
@@ -108,6 +108,30 @@ public class Array {
 		// 반복문이 끝날때까지 중복이 안되면 중복이 안됐다고 리턴
 		return false;
 	}
+	
+	/**
+	 * 정수형 배열이 주어지면 오름차순으로 버블 정렬하는 메서드
+	 * 매개변수 : 정수형 배열 => int arr[]
+	 * 리턴타입 : 없음 => void
+	 * 메서드명 : sort
+	 */
+	public static void sort(int arr[]) {
+		if(arr == null) {
+			return;
+		}
+		for(int i = 0 ; i < arr.length-1 ; i++) {
+			for(int j=0; j<arr.length-1-i; j++) {
+				if(arr[j]>arr[j+1]) {//앞의것과 비교하기때문에 i가아닌 j 그리고 j+1
+					int tmp = arr[j];
+					arr[j] = arr[j+1];
+					arr[j+1] = tmp;
+				}
+			}
+			
+		}
+	}
+	
+	
 	
 	
 
