@@ -1,4 +1,4 @@
-package day12.practice;
+package day13.homework;
 /*
  * 단어장 클래스
  * - 단어들의 모임
@@ -60,46 +60,48 @@ public class VocabularyNote {
 	}
 	
 	/**
-	 * 단어와 뜻이 주어지면 없는 단어이면 새로 단어를 추가하고,
-	 * 있는 단어이면 뜻만 새로 추가하는 메서드
+	 * 단어와 뜻이 주어지면 없는 단어이면 새로 단어를 추가하고 1을 리턴,
+	 * 있는 단어이면 뜻만 새로 추가하는 -1을 리턴하고
+	 * 추가가 실패하면 0을 리턴하는 메서드(단어와 뜻을 넘겨주는 경우)
 	 * 매개변수 : 단어와 뜻 => String title, String meaning 
-	 * 리턴타입 : 없음 => void
+	 * 리턴타입 : -1(뜻추가), 0(추가실패), 1(단어추가) => int
 	 * 메서드명 : insert
 	  */
 	
 	//(단어와 뜻을 넘겨주는 경우)
-	public void insert(String title, String meaning) {
+	public int insert(String title, String meaning) {
 		//단어장(배열)에 단어가 다 찼으면 추가를 하지 못함.
 		if(wordCount == wordList.length) {
-			System.out.println("Vocabulary note is full");
-			return;
+			//System.out.println("Vocabulary note is full");
+			return 0;
 		}
 		int index = indexOf(title);
 		//없는 단어이면 새 단어로 추가
 		if(index == -1) {
 			//단어의 뜻을 이용해 단어 객체를 생성한 후 단어장에 추가
 			wordList[wordCount++] = new Word2(title, meaning);
-			return;
+			return 1;
 		}
 		//있는 단어이면 뜻을 추가
 		wordList[index].addMeaning(meaning);
+		return -1;
 		
 	}
 	
 	/**
-	 * 단어와주어지면 단어장에서 삭제하는 메서드
+	 * 단어와주어지면 단어장에서 삭제하고 삭제 여부를 알려주는 메서드
 	 * 매개변수 : 삭제할 단어 => String title
-	 * 리턴타입 : 없음 => void
+	 * 리턴타입 : 삭제 여부 => boolean
 	 * 메서드명 : delete
 	  */
 	
-	public void delete(String title) {
+	public boolean delete(String title) {
 		// 우선적으로 삭제할 단어가 어디있는지 찾아야함
 		int index = indexOf(title);
 		// 단어가 단어장에 없으면 알림 메세지 출력 후 종료
 		if(index == -1){
-			System.out.println("no words found");
-			return ;
+			//System.out.println("no words found");
+			return false;
 		}
 		// 찾은 위치부터 한칸씩 밀어줌 // wordCount-1로 한 이유는 두개씩 작업해야하기때문
 		for(int i = index; i < wordCount -1; i++) {
@@ -110,6 +112,9 @@ public class VocabularyNote {
 		wordCount--;
 		// 마지막 단어를 비워줌(null)
 		wordList[wordCount] = null;
+		
+		
+		return true;
 		
 	}
 	
@@ -133,55 +138,87 @@ public class VocabularyNote {
 	}
 	
 	/**
-	 * 단어가 주어지면 단어장에 해당 단어를 출력하는 메서드
+	 * 단어가 주어지면 단어장에 해당 단어를 출력하고 단어가 있는지 없는지를 알려주는 메서드
 	 * 매개변수 : 단어 => String title
-	 * 리턴타입 : 없음 = > void
+	 * 리턴타입 : 단어가 있는지 없는지 = > boolean
 	 * 메서드명 : search
 	 */
-	public void search(String title) {
+	public boolean search(String title) {
 		int index = indexOf(title);
 		
 		if(index == -1) {
 			System.out.println("No words found");
-			return ;
+			return false;
 			
 		}
 		wordList[index].print();
+		return true;
 	}
 	
 	/**
-	 * 단어와 수정할 뜻의 번호와 수정할 뜻의 의미가 단어의 뜻을 수정하는 메서드
+	 * 단어와 수정할 뜻의 번호와 수정할 뜻의 의미가 단어의 뜻을 수정하고 수정 여부를 알려주는 메서드
 	 * 매개변수 : 단어, 수정할 뜻 번호, 수정할 뜻
 	 * 			=> String title, int maeningIndex, String meaning
-	 * 리턴타입 : 없음 => void
+	 * 리턴타입 : 수정여부 => boolean
 	 * 메서드명 : updateMeaning
 	 */
-	public void updateMeaning(String title, int meaningIndex, String meaning) {
+	public boolean updateMeaning(String title, int meaningIndex, String meaning) {
 		
 		int index = indexOf(title);
+		
 		if(index == -1) {
 			System.out.println("No words found");
-			return;
+			return false;
 		}
+		
 		if(!wordList[index].updateMeaning(meaningIndex, meaning)){
-			System.out.println("Wrong number");
+			//System.out.println("Wrong number");
+			return false;
 		}
+		
+		return true;
+		
 	}
 	
 	/**
-	 * 단어와 수정할 단어가 단어가 주어지면 단어를 수정하는 메서드
+	 * 단어와 수정할 단어가 단어가 주어지면 단어를 수정하고 수정여부를 알려주는 메서드
 	 * 매개변수 : 단어와 수정할 단어 => String title, String updateTitle
-	 * 리턴타입 : 없음 => void
+	 * 리턴타입 : 수정 여부 => boolean
 	 * 메서드명 : updateTitle
 	 *  */
-	public void updateTitle(String title, String updateTitle) {
+	public boolean updateTitle(String title, String updateTitle) {
 		int index = indexOf(title);
 		if(index == -1) {
-			System.out.println("No words found");
-			return;
+			//System.out.println("No words found");
+			return false;
 		} 
 		wordList[index].setTitle(updateTitle);
+		return true;
 	}
+
+	/**
+	 * 단어와 삭제할 뜻의 번호가 주어지면 뜻을 삭제하고, 삭제 여부를 알려주는 메서드
+	 * 매개변수 : 단어와 뜻 번호 => String title, int num
+	 * 리턴타입 : 뜻 삭제 여부 =? boolean
+	 * 메서드명 : deleteMeaning
+	 * @param title2
+	 * @param num2
+	 * @return
+	 */
+	public boolean deleteManing(String title, int num) {
+		//단어의 위치를 알려줌
+		int index = indexOf(title);
+		//해당하는 단어가 없으면 삭제 불가능
+		if(index == -1) {
+			return false;
+		}
+		Word2 tmp = wordList[index];
+		if(tmp.removeMeaning(num)) {
+			return true;
+		}
+		return false;
+	}
+
 	
 }
 
