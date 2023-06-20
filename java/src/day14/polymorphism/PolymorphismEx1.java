@@ -26,7 +26,7 @@ public class PolymorphismEx1 {
 		
 		HomeAppliances appliance = tv2;//업캐스팅
 		remocon1.turnOff(appliance);
-		
+		System.out.println("==============");
 		remocon1.turnOn(tv2); // 가전을 켜는기능
 		remocon1.turnOn(aircon1);// 가전을 켜는기능
 		remocon1.turnOn(radio2);// 가전을 켜는기능
