@@ -2,13 +2,24 @@ package day15.practice.shop.controller;
 
 import java.util.Scanner;
 
+import day15.practice.shop.vo.Customer;
 import day15.practice.shop.vo.Product;
-
+import day15.practice.shop.vo.Sales;
+import lombok.Data;
+@Data
 public class ShopManager {
 	
 	private Scanner sc = new Scanner(System.in);
 	private Product list[] = new Product[10];//제품리스트
+	private Customer customerList[] = new Customer[10]; // 최대 10명의 고객 관리
+	private int customerCount = 0; 
 	private int count = 0;//저장된 제품 대수
+	private Sales salesHistory[] = new Sales[100];
+	private int salesCount;
+	//판매 기록//몇 개 판매했는지가 아닌, 몇 번을 판매했는지
+	private int totalPrice;
+	
+	
 	
 	
 	public void run() {
@@ -40,7 +51,7 @@ public class ShopManager {
 		System.out.println("2. 제품 입고");
 		System.out.println("3. 제품 조회");
 		System.out.println("4. 매출 조회");
-		System.out.println("5. 고객 등록");
+		System.out.println("5. 고객 관리");
 		System.out.println("6. 프로그램 종료");
 		System.out.println("메뉴 선택");
 		
@@ -51,7 +62,7 @@ public class ShopManager {
 		switch(user) {
 		
 		case 1:
-			System.out.println("Product sales");
+			sell();
 		
 			break;
 		case 2:
@@ -66,12 +77,12 @@ public class ShopManager {
 			break;
 		case 4:
 
-			System.out.println("Sales inquiry");
+			SalesInquiry();
 
 			break;
 		case 5:
 
-			System.out.println("Customer registration");
+			customerCare();
 
 		case 6:
 			break;
@@ -79,13 +90,143 @@ public class ShopManager {
 		System.out.println("Wrong Input!");
 		}
 	}
-	
-	
-
-	private void Sales() {
+	private void customerCare() {
+		System.out.println("1. 고객 조회");
+		System.out.println("2. 고객 등록");
+		System.out.println("이동할 번호를 입력해주세요.");
+		
+		int num = sc.nextInt();
+		switch(num) {
+		case 1:
+			customerinquiry();
+			break;
+		case 2:
+			registerCustomer();
+			break;
+			default:
+				System.out.println("잘못된 입력");
+		}
 		
 		
 	}
+	
+	private void registerCustomer() {
+		//고객 정보 입력
+		System.out.println("등록할 고객의 이름과 번호를 적어주세요. Ex) 홍길동 010 12345678");
+		sc.nextLine();
+		String name = sc.next();
+		String phoneNumber = sc.next();
+		
+		//고객을 등록(고객 리스트)
+		//이미 등록된 전화번호이면 등록을 X
+		for(int i = 0; i < customerCount ; i++) {
+			// customerList[i] : 고객 리스트에서 i번지에 있는 고객 정보
+			// customerList[i].getPhoneNumber() : i번지 고객의 전화번호
+			// i번지 고객의 전화번호와 등록하려는 고객의 전화번호가 같으면 등록 실패
+			if(customerList[i].getPhoneNumber().equals(phoneNumber)) {
+				System.out.println("등록된 번호, 고객 등록 실패");
+				return;
+			}
+		}
+		
+		//새 전화번호이면 등록
+		//입력받은 고객 정보를 이용하여 고객 객체를 생성한 후, 마지막 고객 다음에 새 고객을 추가
+		//등록된 고객의 수를 증가
+		customerList[customerCount++] = new Customer(name,phoneNumber);
+		
+		
+		
+		
+	}
+	private void customerinquiry() {
+		//검색할 이름을 입력
+		System.out.println("이름명 : ");
+		sc.nextLine();//엔터, 이전 입력에서 엔터를 쳤기 때문에 엔터 제거
+		String name = sc.nextLine();
+		
+		//입력한 검색어 맞는 이름을 출력
+		//등록된 이름 중에 검색어와 일치하는 이름이 어디있는지 확인
+		int index = indexOf(name);
+		
+		//제품이 있으면 제품 정보를 출력
+		if(index >= 0) {
+			list[index].print();
+			return;//리턴을 쓰면 아래에 else를 안써도됨, 안쓰면 else를 써야함
+		}
+		//없으면 없는 제품이라고 출력
+		System.out.println("해당 제품이 없습니다.");
+		
+	}
+	
+
+	private void sell() {
+		//제품명 입력
+		System.out.print("제품명 : ");
+		sc.nextLine();
+		String name = sc.nextLine();
+		//제품 개수 입력
+		System.out.print("수량 : ");
+		int amount = sc.nextInt();
+		//고객 정보 입력
+		System.out.print("번호 : ");
+		String phoneNumber = sc.next();
+		
+		//있는 제품인지 확인
+		int index = indexOf(name);
+		if(index < 0) {
+			System.out.println("제품명 오류!");
+			return;
+		}
+		if(amount <= 0) {
+			System.out.println("제품 수량 오류");
+			return;
+		}
+		//있는 고객인지 확인
+		int customerindex = indexOfCustomer(phoneNumber);
+		if(customerindex < 0) {
+			System.out.println("전화번호 오류");
+			return;
+		}
+		
+		
+		
+		//판매 내역에 추가
+		//제품 정보
+		//복사 생성자를 이용해서 제품 정보를 복사(깊은 복사)
+		Product product = new Product(list[index]);
+		product.setAmount(amount);
+		// =을 통해서 가져오면(얕은 복사) 하나의 객체를 공유하기 때문에 창고의 재고량이 판매량으로 바뀜
+		
+		//고객 정보
+		Customer customer = customerList[customerindex];
+		//고객 정보를 공유하기때문에 깊은복사를 할 필요가 없음.
+		
+		
+		Sales sales = new Sales(customer, product);
+		salesHistory[salesCount++] = sales;
+		
+		//판매된 개수만큼 제고량에서 빼줘야함 - 미리 만들어둔 release 메서드를 사용해도 무방
+//		int remainAmount = list[index].getAmount() - amount;
+//		list[index].setAmount(remainAmount);
+//		
+		list[index].release(amount);
+		
+		//매출금액을 추가
+		totalPrice += sales.getTotalPrice();
+		
+		System.out.println(totalPrice);
+		
+	}
+	private int indexOfCustomer(String phoneNumber) {
+		for(int i = 0; i < customerCount; i++) {
+			//고객의 번호가 같으면		
+			if(customerList[i].getPhoneNumber().equals(phoneNumber)) {
+				return i;
+			}
+		}
+		return -1;
+	}
+
 	private void Receiving() {
 		//입고할 제품명 입력
 		System.out.println("입고할 제품명을 입력해 주세요.");
@@ -184,15 +325,25 @@ public class ShopManager {
 		}return -1;
 	}
 	
-	
+	//제품을 검색해서 조회하는 메서드
 	private void Inquiry() {
-		System.out.println("1. radio");
-		System.out.println("2. Tv");
-		System.out.println("3. Aircon");
+		//검색할 제품을 입력
+		System.out.println("제품명 : ");
+		sc.nextLine();//엔터, 이전 입력에서 엔터를 쳤기 때문에 엔터 제거
+		String name = sc.nextLine();
 		
 		
-		int user = sc.nextInt();
-		Homeappliances(user);
+		//입력한 검색어 맞는 제품을 출력
+		//등록된 제품들 중에 검색어와 일치하는 제품이 어디있는지 확인
+		int index = indexOf(name);
+		
+		//제품이 있으면 제품 정보를 출력
+		if(index >= 0) {
+			list[index].print();
+			return;//리턴을 쓰면 아래에 else를 안써도됨, 안쓰면 else를 써야함
+		}
+		//없으면 없는 제품이라고 출력
+		System.out.println("해당 제품이 없습니다.");
 		
 	}
 	private void Homeappliances(int user) {
@@ -230,31 +381,15 @@ public class ShopManager {
 	
 	
 	private void SalesInquiry() {
-		
-	}
-	
-	
-	
-	
+		//매출 내역 출력
+			for(int i =0; i<salesCount; i++) {
+				salesHistory[i].print();
+			}
 
-
-
-
-	class Homeappliances{
-		
+			//누적 매출역 출력
+			System.out.println("누적 매출액 : " + totalPrice);
 	}
-	class Radio extends Homeappliances{
-		
-		double frequency;
-		
-		
-	}
-	class TV extends Homeappliances{
-		int channel;
-	}
-	class Airconditioner extends Homeappliances{
-		double CurrentTemperature;//현재온도
-		double desiredTemperature;//희망온도
-	}
-
 }
+	
+	
+	
