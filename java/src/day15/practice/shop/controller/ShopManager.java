@@ -5,9 +5,10 @@ import java.util.Scanner;
 import day15.practice.shop.vo.Customer;
 import day15.practice.shop.vo.Product;
 import day15.practice.shop.vo.Sales;
+import day17.interfaceex.RunInterface;
 import lombok.Data;
 @Data
-public class ShopManager {
+public class ShopManager implements RunInterface{
 	
 	private Scanner sc = new Scanner(System.in);
 	private Product list[] = new Product[10];//제품리스트
