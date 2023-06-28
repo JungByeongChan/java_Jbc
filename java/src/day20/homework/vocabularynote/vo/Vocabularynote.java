@@ -2,21 +2,19 @@ package day20.homework.vocabularynote.vo;
 
 import java.util.ArrayList;
 
+import lombok.AllArgsConstructor;
+@AllArgsConstructor
 public class Vocabularynote {
 	//멤버 변수
 		//단어들
 		private ArrayList<String> wordList = new ArrayList<>();//단어들
 		private int wordCount;//저장된 단어의 개수
 		
-		//생성자
-		public void VocabularyNote() {
-			wordList = new Word[10];
-		}
 		
 		public void VocabularyNote(Word wordList[]) {
 			// 기존 단어장의 크기와 10을 비교해서 큰수로 단어장 크기를 선택
 			int size = wordList.length > 10 ? wordList.length : 10;
-			this.wordList = new Word[10];
+			this.wordList = wordList;
 			for(int i = 0 ; i < wordList.length ; i++) {
 				this.wordList[i] = new Word(wordList[i]);
 			}
