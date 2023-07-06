@@ -1,13 +1,19 @@
 package day25.test.student.vo;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Objects;
 
 import lombok.Data;
 
 @Data
-public class Student2 {
+public class Student2 implements Serializable{
+	
+	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3496893728672081684L;
 	private int grade;
 	private String name;
 	private String Subject;

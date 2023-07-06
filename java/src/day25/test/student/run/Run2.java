@@ -1,6 +1,6 @@
 package day25.test.student.run;
 
-import day25.test.student.controller.Controller;
+import day25.test.student.controller.Controller2;
 
 public class Run2 {
 
@@ -8,7 +8,7 @@ public class Run2 {
 		// TODO Auto-generated method stub
 
 		
-		Controller run = new Controller();
+		Controller2 run = new Controller2();
 		run.run();
 	}
 
