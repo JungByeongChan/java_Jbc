@@ -91,10 +91,12 @@ public class GameController {
 	private void play() {
 		//랜덤 수 생성
 		bbGame = new BaseballGame();
+		
+		//맞출때까지 반복
 		List<Integer> user = new ArrayList<>();
 		int count = 0;
-		//맞출때까지 반복
 		do {
+			user.clear();
 			//사용자가 입력
 			System.out.println("user :");
 			for(int i=0;i<3;i++) {
@@ -107,7 +109,7 @@ public class GameController {
 			}
 			//결과 출력
 			bbGame.printResult();
-			user.clear();
+			
 			count++;
 		}while(bbGame.getStrike() != 3);
 		//기록 관리자(개수제한X)
