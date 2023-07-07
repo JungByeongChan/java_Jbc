@@ -11,7 +11,7 @@ public class ServerEx2 {
 
 	public static void main(String[] args) {
 		int port = 5001;// 1. 포트번호 지정
-
+		
 		//serverSocket 생성
 		try(ServerSocket serverSocekt = new ServerSocket(port);){
 			while(true) {
