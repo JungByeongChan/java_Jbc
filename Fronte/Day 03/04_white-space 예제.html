@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>white-space 예제</title>
+	<style>
+		.box{
+			width : 200px;
+		}
+		.box{/* pre-wrap과 비슷하게 동작*/
+			white-space: break-spaces
+			
+		}
+		.box2{/*	공백을 하나로 처리, 크기를 넘어간 경우 무시하고 한줄로 처리	*/;
+			white-space: nowrap;
+			
+
+		}
+		.box3{/*	공백을 입력한대로 처리, 크기를 넘거나 경우 무시	*/
+			white-space: pre;
+			
+		}
+		.box4{/* 	공백을 입력한대로 처리. 크기를 넘거간 경우 줄바꿈	*/
+			white-space: pre-wrap;
+		}
+		.box5{/* 줄바꿈을 제외한 공백을 하나로 처리 줄바꿈은 적용. 크기를 넘어간 경우 줄바꿈 적용*/
+			white-space: pre-line;
+		}
+	</style>
+</head>
+<body>
+	<div class="box box1"> 안녕하세요 제 이름은      홍길동입니다 만나서 반갑습니다</div>
+	<div class="box box2">안녕하세요 제 이름은       홍길동입니다 만나서 반갑습니다</div>
+	<div class="box box3">안녕하세요 제 이름은        홍길동입니다 만나서 반갑습니다</div>
+	<div class="box box4">안녕하세요 제 이름은        홍길동입니다 만나서 반갑습니다</div>
+	<div class="box box5">안녕하세요 제 이름은        홍길동입니다 만나서 반갑습니다</div>
+
+
+</body>
+</html>
