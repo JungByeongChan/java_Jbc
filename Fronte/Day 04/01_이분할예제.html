@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이분할예제</title>
+	<style>
+	/* 
+		float
+		- 요소를 나란히 한줄에 배치할 때 사용(엔터에 의한 공백이 없어야 하는 경우)
+		- 부모 요소에 ::after를 추가해서 요소가 부가요소 안에 포함되도록 작업
+	*/
+	.nemo{
+		width: 500px; height: 500px; border: 3px solid red;
+		padding: 10px;
+	}
+	.box{ width: 235px; height: 480px;
+		background-color: blue;
+		
+		
+	}
+	.box1{
+		width: 235px; height: 480px;
+		background-color: black;
+		
+		float: right;
+	}
+	.nemo::after{
+		content: ''; clear: both; display: block;
+	}
+	
+	</style>
+</head>
+<body>
+	<div class="nemo">
+		<div class="box box1">2</div>
+		<div class="box box2">3</div>
+	</div>
+</body>
+</html>

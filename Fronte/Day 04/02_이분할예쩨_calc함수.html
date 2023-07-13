@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+			/* 
+		calc 함수
+		- 다양한 단위의 값들을 계산해주는 함수
+		- 연산자 앞뒤로는 공백을 추가
+	*/
+	.nemo{
+		width:calc(100% - 2 * 10px); border: 3px solid red;
+		padding: 10px;
+	}
+	.box{ 
+		width: calc((100% - 10px) / 2); height: calc(500px - 2 * 10px);
+		background-color: black;
+		
+		float: right;
+		
+	}
+	.box1{
+		background-color: blue; float: left;
+	}
+	.nemo::after{
+		content: ''; clear: both; display: block;
+	}
+	
+	</style>
+</head>
+<body>
+	<div class="nemo">
+		<div class="box box1">2</div>
+		<div class="box box2">3</div>
+	</div>
+</body>
+</html>
