@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Naver</title>
+	<link rel="stylesheet" href="naver copy.css">
+	
+</head>
+<body>
+	<header>
+		<div id="ham_menu">
+			<button class="btn-ham">
+				<!-- 
+					웹 표준은 웹접근성이 좋아야 함. 
+					=> 시력이 불편한 분들이 리더기를 통해 사이트를 방문해도 사이트를 이용할 수 있게 하기 
+					   위해 아이콘, 이미지 등에도 안보이게 글자를 추가
+				-->
+				<span class="blind">확장 영역</span>
+			</button>
+		</div>
+		<!-- 햄거버 메뉴 끝 -->
+		<div id="box_search" class="clearfix">
+			<div class="box-logo">
+				<a href="#" class="link-logo">
+					<img src="../img/네이버 제헌절 로고.png" alt="로고" class="img-link-logo" width="58px" height="58px">
+				</a>
+			</div>
+			<form class="box-search-input">
+				<fieldset>
+					<legend class="blind">검색</legend>
+					<div class="box-input clearfix">
+						<input type="text" class="input-search" placeholder="검색어를 입력해 주세요.">
+					</div>
+					<button class="btn-search">
+						<span class="icon-search"></span>
+						<span class="blind">검색</span>
+					</button>
+				</fieldset>
+			</form>
+			<div class="box-btns">
+				<button class="btn-kbd">
+					<span class="blind">입력도구</span>
+				</button>
+				<button class="btn-autocomplete">
+					<span class="blind">자동완성/최근검색어펼치기</span>
+				</button>
+			</div>
+		</div>
+		<!-- 검색창 끝 -->
+		<div class="shortcut-area">
+			<ul class="shortcut-list clearfix">
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service mail"></span>
+						<span class="name-service">메일</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service cafe"></span>
+						<span class="name-service">카페</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service blog"></span>
+						<span class="name-service">블로그</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service shopping"></span>
+						<span class="name-service">쇼핑</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service news"></span>
+						<span class="name-service">뉴스</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service stock"></span>
+						<span class="name-service">증권</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service real"></span>
+						<span class="name-service">부동산</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service map"></span>
+						<span class="name-service">지도</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service webtoon"></span>
+						<span class="name-service">웹툰</span>
+					</a>
+				</li>
+				<li class="shortcut-item">
+					<a href="#" class="link-service">
+						<span class="icon-service type-more"></span>
+						<span class="blind">바로가기 펼침</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+		<!-- 메뉴 끝 -->
+		<div class="box-pay">
+			<a href="#" class="link-pay">
+				<span class="blind">페이로 바로가기</span>
+			</a>
+		</div>
+		<!-- 네이버 페이 끝-->
+		<div class="box-notify">
+			<button class="btn-notify">
+				<span class="blind">알림</span>
+			</button>
+		</div>
+		<!-- 알림 끝 -->
+	</header>
+	<div id="container" class="clearfix">
+		<div class="box-left">
+			<div class="box-banner" id="box_left1">
+				<iframe src="" frameborder="0"></iframe>
+			</div>
+			<!-- 왼쪽 1번째 컨텐츠 끝 -->
+			<div class="box-newsstand" id="box_left2">
+				<div class="box-newsstand-body body-container">
+					<div class="box-header">
+						<ul class="tab-list clearfix">
+							<li class="tab-item">
+								<a href="#" class="btn-newsstand" aria-selected="true">쇼핑</a><a href="#" class="btn-press">언론사편집</a>
+							</li>
+							<li class="tab-item">
+								<a href="#" class="btn-enter">엔터</a>
+							</li>
+							<li class="tab-item">
+								<a href="#" class="btn-sports">스포츠</a>
+							</li>
+							<li class="tab-item">
+								<a href="#" class="btn-economic">경제</a>
+							</li>
+						</ul>
+					</div>
+					<div class="box-header-sub clearfix">
+						<div class="box-sub-left">
+							<a href="#" class="hover float-left">전체언론사<i class="icon-triangle-down"></i></a>
+							<div class="box-news float-left">
+								<a href="#" class="btn-media hover float-left">연합뉴스</a>
+								<ul class="news-list float-left">
+									<li class="news-item">
+										<a href="#"class="link-news hover">1."北영사관 실종 모자, 러시아 당국에 체포돼 北대사관에 감금"</a>
+									</li>
+									<li class="news-item">
+										<a href="#"class="link-news hover">2."北영사관 실종 모자, 러시아 당국에 체포돼 北대사관에 감금"</a>
+									</li>
+									<li class="news-item">
+										<a href="#"class="link-news hover">3."北영사관 실종 모자, 러시아 당국에 체포돼 北대사관에 감금"</a>
+									</li>
+									<li class="news-item">
+										<a href="#"class="link-news hover">4."北영사관 실종 모자, 러시아 당국에 체포돼 北대사관에 감금"</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="box-sub-right">
+							<a href="#" class="link-news-stand">뉴스스탠드</a>
+							<a href="#" class="link-news-home position-relative">뉴스홈</a>
+						</div>
+					</div>
+					<div class="box-main">
+						<div class="box-border">
+							<!-- 가로줄 -->
+							<i class="border-to-right"></i>
+							<i class="border-to-right"></i>
+							<i class="border-to-right"></i>
+							<!-- 세로줄 -->
+							<i class="border-to-bottom"></i>
+							<i class="border-to-bottom"></i>
+							<i class="border-to-bottom"></i>
+							<i class="border-to-bottom"></i>
+							<i class="border-to-bottom"></i>
+						</div>
+						<ul class="list-contents">
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+							<li class="item-contents">
+								<a href="#" class="link-contents">
+									<img height="20" src="https://s.pstatic.net/static/newsstand/2020/logo/light/0604/029.png" alt="디지털 타임스">
+								</a>
+								<div class="box-contents-hover">
+									<a href="#" class="btn-subs">구독</a><a href="#" class="link-news-view">기사보기</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="box-newsstand-page page-container">
+					<div class="box-page">
+						<button class="btn-prev"><span class="blind">이전 버튼</span></button>
+						<div class="box-title float-left">
+							<span class="text-point">
+								<span>언론사</span>
+								<span class="text-more">더보기</span>
+							</span>
+							<span class="page-current">1</span><span class="page-max">/4</span>
+						</div>
+						<button class="btn-next"><span class="blind">다음 버튼</span></button>
+					</div>
+					<div class="box-btns">
+						<button class="btn-list" aria-checked="true">
+							<span class="blind">리스트형</span>
+						</button>
+						<button class="btn-thumb" >
+							<span class="blind">썸네일형</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- 왼쪽 2번째 컨텐츠 끝 -->
+			<div class="box-shopping" id="box-left3">
+				<div class="box-shopping-body body-container">
+					<div class="box-header">
+						<div class="box-header">
+							<ul class="tab-list clearfix">
+								<li class="tab-item">
+									<a href="#" class="btn-newsstand" aria-selected="true">쇼핑</a>
+								</li>
+								<li class="tab-item">
+									<a href="#" class="btn-enter">맨즈</a>
+								</li>
+								<li class="tab-item">
+									<a href="#" class="btn-sports">월쁠딜</a>
+								</li>
+								<li class="tab-item">
+									<a href="#" class="btn-economic">쇼핑라이브</a>
+								</li>
+							</ul>
+						</div>
+						<div class="box-header-sub clearfix">
+							<div class="box-sub-left">
+								<div class="box-shop float-left">
+									<span class="text-today-pick float-left">오늘의혜택</span>
+									<a href="#" class="link-mall hover float-left">
+										<span class="img-today-pick float-left">
+											<img height="13" src="https://s.pstatic.net/shopping.phinf/20230522_16/f53ef733-6c08-41b1-82d5-16035c4032d7.jpg" alt="">
+										</span>
+										<span class="text-today-pick-desc">
+											오늘 종료되는
+											<em>24시간 특가딜</em>
+											확인하러가기
+										</span>
+									</a>
+								</div>
+							</div>
+							<div class="box-sub-right">
+								<div class="box-page-num float-left">
+									<span class="page-current">1</span><span class="page-max">/18</span>
+								</div>
+								<button class="btn-prev float-left">
+									<i class="icon-prev">
+										<span class="blind">이전버튼</span>
+									</i>
+									</button>
+								<button class="btn-next float-left">
+									<i class="icon-next">
+										<span class="blind">다음버튼</span>
+									</i>
+								</button>
+							</div>
+						</div>
+						<div class="box-main clearfix">
+							<div class="box-main-left float-left">
+								<ul class="list-shopping clearfix">
+									<li class="item-shopping float-left">
+										<a href="#" class="link-shopping">
+											<span class="box-shopping-img">
+												<img width="115" height="115" src="https://s.pstatic.net/shopping.phinf/20230720_16/fa5b33fc-10eb-42cf-81c8-f514205bd329.jpg?type=f500" alt="" class="img-shopping">
+											</span>
+											<div class="hover">
+											<p class="title-shopping-header">LG코드제로청소기</p>
+											<p class="title-shopping-body">딱하루 극한특가!</p>
+											</div>
+										</a>
+									</li>
+									<li class="item-shopping float-left">
+										<a href="#" class="link-shopping">
+											<span class="box-shopping-img">
+												<img width="115" height="115" src="https://s.pstatic.net/shopping.phinf/20230720_16/fa5b33fc-10eb-42cf-81c8-f514205bd329.jpg?type=f500" alt="" class="img-shopping">
+											</span>
+											<div class="hover">
+												<p class="title-shopping-header">LG코드제로청소기</p>
+												<p class="title-shopping-body">딱하루 극한특가!</p>
+											</div>
+										</a>
+									</li>
+									<li class="item-shopping float-left">
+										<a href="#" class="link-shopping">
+											<span class="box-shopping-img">
+												<img width="115" height="115" src="https://s.pstatic.net/shopping.phinf/20230720_16/fa5b33fc-10eb-42cf-81c8-f514205bd329.jpg?type=f500" alt="" class="img-shopping">
+											</span>
+											<div class="hover">
+												<p class="title-shopping-header">LG코드제로청소기</p>
+												<p class="title-shopping-body">딱하루 극한특가!</p>
+											</div>
+										</a>
+									</li>
+									<li class="item-shopping float-left">
+										<a href="#" class="link-shopping">
+											<span class="box-shopping-img">
+												<img width="115" height="115" src="https://s.pstatic.net/shopping.phinf/20230720_16/fa5b33fc-10eb-42cf-81c8-f514205bd329.jpg?type=f500" alt="" class="img-shopping">
+											</span>
+											<div class="hover">
+												<p class="title-shopping-header">LG코드제로청소기</p>
+												<p class="title-shopping-body">딱하루 극한특가!</p>
+											</div>
+										</a>
+									</li>
+									<li class="item-shopping float-left">
+										<a href="#" class="link-shopping">
+											<span class="box-shopping-img">
+												<img width="115" height="115" src="https://s.pstatic.net/shopping.phinf/20230720_16/fa5b33fc-10eb-42cf-81c8-f514205bd329.jpg?type=f500" alt="" class="img-shopping">
+											</span>
+											<div class="hover">
+												<p class="title-shopping-header">LG코드제로청소기</p>
+												<p class="title-shopping-body">딱하루 극한특가!</p>
+											</div>
+										</a>
+									</li>
+									<li class="item-shopping float-left">
+										<a href="#" class="link-shopping">
+											<span class="box-shopping-img">
+												<img width="115" height="115" src="https://s.pstatic.net/shopping.phinf/20230720_16/fa5b33fc-10eb-42cf-81c8-f514205bd329.jpg?type=f500" alt="" class="img-shopping">
+											</span>
+											<div class="hover">
+												<p class="title-shopping-header">LG코드제로청소기</p>
+												<p class="title-shopping-body">딱하루 극한특가!</p>
+											</div>
+										</a>
+									</li>
+									<li class="item-shopping float-left">
+										<a href="#" class="link-shopping">
+											<span class="box-shopping-img">
+												<img width="115" height="115" src="https://s.pstatic.net/shopping.phinf/20230720_16/fa5b33fc-10eb-42cf-81c8-f514205bd329.jpg?type=f500" alt="" class="img-shopping">
+											</span>
+											<div class="hover">
+												<p class="title-shopping-header">LG코드제로청소기</p>
+												<p class="title-shopping-body">딱하루 극한특가!</p>
+											</div>
+										</a>
+									</li>
+									<li class="item-shopping float-left">
+										<a href="#" class="link-shopping">
+											<span class="box-shopping-img">
+												<img width="115" height="115" src="https://s.pstatic.net/shopping.phinf/20230720_16/fa5b33fc-10eb-42cf-81c8-f514205bd329.jpg?type=f500" alt="" class="img-shopping">
+											</span>
+											<div class="hover">
+												<p class="title-shopping-header">LG코드제로청소기</p>
+												<p class="title-shopping-body">딱하루 극한특가!</p>
+											</div>
+										</a>
+									</li>
+								
+								</ul>
+							</div>
+							<div class="box-main-right float-right">
+								<div class="box-mall">
+									<ul class="list-mall clearfix">
+										<li class="item-mall">
+											<a href="" class="link-mall hover">쿠팡</a>
+										</li>
+										<li class="item-mall dot"></li>
+										<li class="item-mall">
+											<a href="" class="link-mall hover">G마켓</a>
+										</li>
+										<li class="item-mall dot"></li>
+										<li class="item-mall">
+											<a href="" class="link-mall hover">옥션</a>
+										</li>
+										<li class="item-mall dot"></li>
+										<li class="item-mall">
+											<a href="" class="link-mall hover">11번가</a>
+										</li>
+										<li class="item-mall dot"></li>
+									</ul>
+									<ul class="list-mall clearfix">
+										<li class="item-mall">
+											<a href="" class="link-mall hover">SSG닷컴</a>
+										</li>
+										<li class="item-mall dot"></li>
+										<li class="item-mall">
+											<a href="" class="link-mall hover">올리브영</a>
+										</li>
+										<li class="item-mall dot"></li>
+										<li class="item-mall">
+											<a href="" class="link-mall hover">위메프</a>
+										</li>
+										<li class="item-mall dot"></li>
+										<li class="item-mall">
+											<a href="" class="link-mall hover">GS샵</a>
+										</li>
+										<li class="item-mall dot"></li>
+									</ul>
+									<ul class="list-mall clearfix">
+										<li class="item-mall">
+											<a href="" class="link-mall hover">CJ온스타일</a>
+										</li>
+										<li class="item-mall dot"></li>
+										<li class="item-mall">
+											<a href="" class="link-mall hover">패션스마일</a>
+										</li>
+										<li class="item-mall dot"></li>
+										<li class="item-mall">
+											<a href="" class="link-mall hover">CJ더마켓</a>
+										</li>
+										<li class="item-mall dot"></li>
+									
+									</ul>
+								</div>
+								<div class="box-menu">
+									<ul class="list-quick-menu clearfix">
+										<li class="item-quick-menu float-left">
+											<a href="" class="link-quick-menu">
+												<div class="img-quick-menu"></div>
+												<div class="text-quick-menu hover">N쇼핑몰</div>
+											</a>
+										</li>
+										<li class="item-quick-menu float-left">
+											<a href="" class="link-quick-menu">
+												<div class="img-quick-menu"></div>
+												<div class="text-quick-menu hover">My홈</div>
+											</a>
+										</li>
+										<li class="item-quick-menu float-left">
+											<a href="" class="link-quick-menu">
+												<div class="img-quick-menu"></div>
+												<div class="text-quick-menu hover">주문배송</div>
+											</a>
+										</li>
+										<li class="item-quick-menu float-left">
+											<a href="" class="link-quick-menu">
+												<div class="img-quick-menu"></div>
+												<div class="text-quick-menu hover">장바구니</div>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<a href="#" class="link-ad">
+									<span class="box-ad-img">
+										<img width="250" height="135" src="https://s.pstatic.net/shopping.phinf/20230719_9/08003ed1-bb7d-48de-9c62-7820160d94da.jpg">
+									</span>
+									<p class="text-ad">올리브영 단독 더블기획 특가</p>
+								</a>
+							</div>
+						
+						
+						</div>
+					</div>
+
+
+
+				</div>
+				<div class="box-shopping-page page-container">
+					<div class="box-page">
+						<button class="btn-prev"><span class="blind">이전 버튼</span></button>
+						<div class="box-title float-left">
+							<span class="text-point">
+								<span>쇼핑아이템</span>
+								<span class="text-more">더보기</span>
+							</span>
+							<span class="page-current">1</span><span class="page-max">/18</span>
+						</div>
+						<button class="btn-next"><span class="blind">다음 버튼</span></button>
+					</div>
+				</div>
+			</div>
+			<!-- 왼쪽 3번재 컨텐츠 끝 -->
+		</div>
+		<!-- 컨텐츠 왼쪽 박스 끝 -->
+		<div class="box-right">
+			<div class="box-account" id="box_right1">
+				<div class="box-in">
+					<p class="box-title">네이버를 더 안전하고 편리하게 이용하세요</p>
+					<a href="#" class="link-login">
+						<i class="icon-login"><span class="blind">NAVER</span></i>로그인
+					</a>
+					<div class="box-links">
+						<a href="#" class="link-find-id">아이디 찾기</a><a href="#" class="link-find-pw">비밀번호 찾기</a><a href="#" class="link-signup">회원가입</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 컨텐츠 오른쪽 박스 끝 -->
+	</div>
+	<!-- 컨텐츠 끝 -->
+	<footer></footer>
+	<!-- 푸터 끝 -->
+</body>
+</html>
