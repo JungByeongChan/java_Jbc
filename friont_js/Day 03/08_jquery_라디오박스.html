@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			height: 50px;
+			width: 200px;
+			border: 3px solid black;
+			border-radius: 10px;
+			text-align: center;
+			padding: 30px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	<label>
+		<input type="radio" name="fruit" value="apple">사과
+		<input type="radio" name="fruit" value="orange">오렌지
+		<input type="radio" name="fruit" value="barnana">바나나
+	</label>
+	<script>
+		$('[name=fruit]').click(function(){
+			let text = $(this).val();
+			$('.box').text(text);
+		});
+
+		$('.apple').click(function(){
+		
+			$('.box').html(`<p>사과</p>`);
+		});
+		$('.orange').click(function(){
+			$('.box').html(`<p>오렌지</p>`);
+		});
+		$('.barnana').click(function(){
+			$('.box').html(`<p>바나나</p>`);
+		});
+	</script>
+</body>
+</html>

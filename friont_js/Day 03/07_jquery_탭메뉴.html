@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.container{
+			display: flex;
+			justify-content: space-around;
+			height: 500px;
+			width: 500px;
+		}
+		.box1{
+			background-color: yellowgreen;
+			height: 500px;
+			width: 500px;
+		}
+		.box2{
+			background-color: red;
+			height: 500px;
+			width: 500px;
+		}
+		.box3{
+			background-color: gray;
+			height: 500px;
+			width: 500px;
+		}
+
+
+	
+	</style>
+	
+</head>
+<body>
+
+	<button class="btn btn-num1" data-target=".box1">버튼1</button>
+	<button class="btn btn-num2" data-target=".box2">버튼2</button>
+	<button class="btn btn-num3" data-target=".box3">버튼3</button>
+	<div class="container">
+		<div class="box box1"></div>
+		<div class="box box2"></div>
+		<div class="box box3"></div>
+	</div>
+	<script>
+		$('.box').hide();
+		$('.btn').click(function(){
+			let target = $(this).attr('data-target');
+			$('.box').hide();
+			$(target).show();
+		});
+		/*
+		$('.btn-num1').click(function(){
+		
+			$('.box').hide();
+			$('.box1').show();
+			
+		});
+		$('.btn-num2').click(function(){
+			$('.box').hide();
+			$('.box2').show();
+			
+		});
+		$('.btn-num3').click(function(){
+			
+			$('.box').hide();
+			$('.box3').show();
+
+		});
+		*/
+		
+	</script>
+	
+	
+</body>
+</html>
