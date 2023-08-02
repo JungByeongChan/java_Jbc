@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>UI 구현</title>
+	<script src="../friont_js/js/jquery.min.js"></script>
+	<link rel="stylesheet" href="Ui구현테스트.css">
+	<style>
+	
+	</style>
+</head>
+<body>
+	<div class="container">
+		<form action="">
+			<div class="form-group">아이디
+				<input type="text" class="form-control" name="id" placeholder="" required>
+			</div>
+			<div class="error-id"></div>
+			<div class="form-group">비밀번호
+				<input type="password" class="form-control" name="pw" placeholder="영문자 대/소문자 특수문자, 숫자 포함 8 ~ 32자" id="password" required>
+			</div>
+			<div class="error-pw"></div>
+			<div class="form-group">비밀번호 확인
+				<input type="password" class="form-control" name="pw2" placeholder="비번확인" required>
+			</div>
+			<div class="error-pw2"></div>
+			<div class="form-group">이메일
+				<input type="text" class="form-control" name="email-main" placeholder="이메일 앞의자리" size="10">
+				@
+				<input type="text" class="form-control" name="Edomain" placeholder="도메인" size="10">
+			</div>
+			<div class="error-email"></div>
+			<div class="form-group">주소
+				<input type="text" class="form-control" name="address" placeholder="대한민국 서울특별시 행복구 행복동">
+			</div>
+			<button class="btn btn-outline-success col-12" type="submit">가입</button>
+		</form>
+		<script>
+			$('[name=id]').change(checkId);
+			$('[name=pw]').change(checkPw);
+			$('[name=pw2]').change(checkPw2);
+			$('[name=Edomain]').change(checkEmail);
+
+
+			
+		$('form').submit(function(){
+			let ok = true;
+
+			if(!checkId()){
+				ok = false;
+			}
+			if(!checkPw()){
+				ok = false;
+			}
+			if(!checkPw2()){
+				ok = false;
+			}
+			if(!checkEmail()){
+				ok = false;
+			}
+			
+			return ok;
+		});
+
+
+
+			function checkId(){
+			let id = $('[name=id]').val();
+			let regex = /^\w{8,13}$/;
+			if(regex.test(id)){
+				$('.error-id').text('사용 가능한 아이디입니다.');
+				return true;
+			}else{
+				$('.error-id').text('필수항목입니다.');
+				return false;
+			}
+		}
+		function checkPw(){
+			let pw = $('[name=pw]').val();
+			let regex = /^[a-zA-Z0-9!@#$]{8,20}$/;
+			if(regex.test(pw)){
+				$('.error-pw').text('');
+				return true;
+			}else{
+				$('.error-pw').text('8~32자 이내로 입력하십시오.');
+				return false;
+			}
+		}
+		function checkPw2(){
+			let pw = $('[name=pw]').val();
+			let pw2 = $('[name=pw2]').val();
+			if(pw == pw2){
+				$('.error-pw2').text('');
+				return true;
+			}else{
+				$('.error-pw2').text('비밀번호와 일치하지 않습니다.');
+				return false;
+			}
+		}
+		function checkEmail(){
+			let email = $('[name=Edomain]').val();
+			let regex = /^[a-zA-Z0-9]+(.[a-zA-Z0-9]+)+$/;
+			if(regex.test(email)){
+				$('.error-email').text('');
+				return true;
+			}else{
+				$('.error-email').text('이메일 도메인이 맞지 않습니다.');
+				return false;
+			}
+		}
+
+		</script>
+</body>
+</html>

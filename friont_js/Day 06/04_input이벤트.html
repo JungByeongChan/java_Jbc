@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>input 이벤트</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" id="input">
+	<script>
+		// change 이벤트는 focus가 해제되거나 엔터를 쳣을 떄 동작.
+		// ==> 복붙이나 입력중에는 이벤트가 발생하지않음.
+		// keyup 이벤트는 키보드를 눌렀다 땟을 때 이벤트가 발생
+		// ==> 때문에 마우스를 이용한 붙여넣기는 반응하지않음
+		// 위와같은 이유들 때문에 input 이벤트를 이용하여 input태그에 입력(직접 입력 또는 복사붙여넣기)를 감지
+		
+		$('#input').on('input', function(){
+			let val = $(this).val();
+			//입력한 값을 가져와서 숫자가 아닌 것들을 빈 공백으로 처리
+			val = val.replace(/[^0-9]/,'');//replace를 활용하여 0-9외의 것들은 비어있는 것으로 처리
+			$(this).val(val);
+		})
+	</script>
+</body>
+</html>

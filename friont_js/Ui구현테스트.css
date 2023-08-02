@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+.container{
+	left: 30px;
+	top: 30px;
+	padding: 20px;
+	
+}
+[class^=error]{
+	color: red; margin-bottom: 10px;
+}
+.form-group{
+	padding: 20px;
+	
+}
+.form-control{
+	border: none;
+	border-bottom: 1px dashed black;
+	display: inline-block;
+}
+.btn{
+	width: 100%;
+	border: 0px;
+	background-color: yellowgreen;
+}
