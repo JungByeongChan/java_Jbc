@@ -79,7 +79,7 @@ create table if not exists student(
  );
  -- 수강(수강번호, 과목코드(FK), 학번(FK), 강의실, 교수, 시간표, 연도, 학기)
  create table if not exists course.`course`(-- 내가 만들려는 테이블이 키워드인경우 반드시 역따옴표(``)를 붙여야함
-	num int not null auto_increment,
+	num int not null auto_increment,course
     subject_code char(6) not null,
     student_num char(10) not null,
     room varchar(20) not null default '', -- null은 빈문자열''보다 차지하는 용량이 크기떄문에 ''을 장려
