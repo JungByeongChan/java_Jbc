@@ -14,7 +14,7 @@ CREATE TABLE `movie` (
 	`mo_running_time`	int	NOT NULL,
 	`mo_plot`	longtext	NOT NULL,
 	`mo_fi_num`	int	NOT NULL,
-	`ag_name`	varchar(10)	NULL,
+	`mo_ag_name`	varchar(10)	NULL,
 	`mo_reservation_rate`	int	NOT NULL DEFAULT 0
 );
 
@@ -50,7 +50,7 @@ DROP TABLE IF EXISTS `film_persion`;
 
 CREATE TABLE `film_persion` (
 	`fp_num`	int	NOT NULL  primary key auto_increment,
-	`fp_name`	varchar(10)	not NULL,
+	`fp_name`	varchar(50)	not NULL,
 	`fp_thumbnail`	varchar(50)	NULL,
 	`fp_agency`	varchar(20)	NULL,
 	`fp_final_education`	varchar(20)	NULL,
@@ -61,10 +61,10 @@ CREATE TABLE `film_persion` (
 DROP TABLE IF EXISTS `role`;
 
 CREATE TABLE `role` (
-	`ro_num`	int	NOT NULL  primary key auto_increment,
-	`ro_role`	varchar(30)	not NULL,
-	`ro_mo_num`	int	NOT NULL,
-	`ro_fp_num`	int	NOT NULL
+	`ro_num`	int	NOT NULL PRIMARY KEY AUTO_INCREMENT, --
+	`ro_role`	varchar(30)	NOT NULL, --
+	`ro_fp_num`	int	NOT NULL,
+	`ro_mo_num`	int	NOT NULL
 );
 
 DROP TABLE IF EXISTS `file`;
@@ -86,7 +86,7 @@ CREATE TABLE `movie_file` (
 DROP TABLE IF EXISTS `age`;
 
 CREATE TABLE `age` (
-	`ag_num`	varchar(10)	not NULL primary key
+	`ag_name`	varchar(10)	not NULL primary key
 );
 
 DROP TABLE IF EXISTS `theater`;
@@ -140,14 +140,15 @@ CREATE TABLE `movie_schedule` (
 	`ms_discount`	char(1)	not NULL default 'N'
 );
 
-DROP TABLE IF EXISTS `meber`;
+DROP TABLE IF EXISTS `member`;
 
-CREATE TABLE `meber` (
+CREATE TABLE `member` (
 	`me_id`	varchar(15)	NOT NULL primary key,
 	`me_pw`	varchar(20)	not NULL,
 	`me_name`	varchar(20)	not NULL,
 	`me_phone`	varchar(15)	not NULL,
-	`me_birthday`	date	not NULL
+	`me_birthday`	date	not NULL,
+    `me_authority` varchar(5) not null default 'user'
 );
 
 DROP TABLE IF EXISTS `reservation`;
@@ -205,7 +206,7 @@ REFERENCES `file` (
 );
 
 ALTER TABLE `movie` ADD CONSTRAINT `FK_age_TO_movie_1` FOREIGN KEY (
-	`ag_name`
+	`mo_ag_name`
 )
 REFERENCES `age` (
 	`ag_name`
@@ -246,18 +247,18 @@ REFERENCES `country` (
 	`ct_name`
 );
 
-ALTER TABLE `role` ADD CONSTRAINT `FK_movie_TO_role_1` FOREIGN KEY (
-	`ro_mo_num`
-)
-REFERENCES `movie` (
-	`mo_num`
-);
-
 ALTER TABLE `role` ADD CONSTRAINT `FK_film_persion_TO_role_1` FOREIGN KEY (
 	`ro_fp_num`
 )
 REFERENCES `film_persion` (
 	`fp_num`
+);
+
+ALTER TABLE `role` ADD CONSTRAINT `FK_movie_TO_role_1` FOREIGN KEY (
+	`ro_mo_num`
+)
+REFERENCES `movie` (
+	`mo_num`
 );
 
 ALTER TABLE `movie_file` ADD CONSTRAINT `FK_file_TO_movie_file_1` FOREIGN KEY (
@@ -316,10 +317,10 @@ REFERENCES `movie_schedule` (
 	`ms_num`
 );
 
-ALTER TABLE `reservation` ADD CONSTRAINT `FK_meber_TO_reservation_1` FOREIGN KEY (
+ALTER TABLE `reservation` ADD CONSTRAINT `FK_member_TO_reservation_1` FOREIGN KEY (
 	`rv_me_id`
 )
-REFERENCES `meber` (
+REFERENCES `member` (
 	`me_id`
 );
 
@@ -334,7 +335,7 @@ ALTER TABLE `reservation_list` ADD CONSTRAINT `FK_seat_TO_reservation_list_1` FO
 	`rl_se_num`
 )
 REFERENCES `seat` (
-	`se_num`
+	`se_num`	
 );
 
 ALTER TABLE `reservation_list` ADD CONSTRAINT `FK_price_TO_reservation_list_1` FOREIGN KEY (
@@ -351,17 +352,17 @@ REFERENCES `movie` (
 	`mo_num`
 );
 
-ALTER TABLE `review` ADD CONSTRAINT `FK_meber_TO_review_1` FOREIGN KEY (
+ALTER TABLE `review` ADD CONSTRAINT `FK_member_TO_review_1` FOREIGN KEY (
 	`re_me_id`
 )
-REFERENCES `meber` (
+REFERENCES `member` (
 	`me_id`
 );
 
-ALTER TABLE `like` ADD CONSTRAINT `FK_meber_TO_like_1` FOREIGN KEY (
+ALTER TABLE `like` ADD CONSTRAINT `FK_member_TO_like_1` FOREIGN KEY (
 	`me_id`
 )
-REFERENCES `meber` (
+REFERENCES `member` (
 	`me_id`
 );
 
