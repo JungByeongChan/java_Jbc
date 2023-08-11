@@ -46,7 +46,43 @@ Delimiter;
 Call 프로시저명(매개변수들);
 
 */
-
+-- 모든 영화 예매율을 업데이트하는 프로시저
+drop procedure if exists update_reservation_rate;
+delimiter //
+create procedure update_reservation_rate()
+begin
+	declare _total_seat int;
+	declare done int default 0; 
+	declare _mo_num int; 
+    declare _movie_seat int;
+	
+	declare cur cursor for
+		select * from movie;
+	declare continue handler for not found set done = 1;
+	set _total_seat = (
+    select
+		sum(rv_adult + rv_teenager)
+	from
+		reservation
+    );
+    
+	 open cur;
+		movie_loop : loop
+			-- fetch : cur에서 한 행씩 꺼내는 작업을 함
+			-- done이 자동으로 1이 됨(왜냐면 16번째줄에서 설정했기 때문)
+			fetch cur into _num;
+			if done then
+				leave movie_loop;
+			end if;
+			-- 하고싶은 작업
+			set _movie_seat = ();
+		end loop;
+		
+		-- cursor를 닫음
+		close cur;
+	-- 영화 예매를 이용하여 예매 좌석수별로 예매율을 계산 => A영화 예매율 : A영화 예매 좌석수 /예매중인 전체 예매 좌석수 * 100
+end //
+delimiter ;
 -- set _num = (select yy from xx);
 -- insert into A(X,C,V) values(1,2,3);
 
@@ -59,7 +95,7 @@ In _ms_num int, -- 스케쥴 번호
 In _id varchar(15),-- 예약 아이디명
 in _adult_count int,-- 성인수
 in _teenager_count int,-- 청소년 수
-in _seat_list text
+in _seat_list text -- 좌석번호를 json 형태의 문자열로
 
 
 )
@@ -75,6 +111,7 @@ begin
     declare _pr_num int;
     declare _rv_num varchar(20);
     declare seat_name varchar(4);
+    declare _possible_seat int;
     /*
     cursor
     - sql 결과 집합을 가르키는 데이터 타입. 프로시저나 함수 내에서 사용
@@ -90,15 +127,17 @@ begin
 	declare continue handler for not found set done = 1;
     
     -- 예약번호 생성 -- 202308091614MS008001
+		-- now() : YYYY -- MM -- DD HH:MM:SS => YYYYMMDDHHMM
     set _rv_num = concat(
     date_format(now(), '%Y%m%d%H%i'),
     'MS',lpad(_ms_num, 3,0),lpad((select count(*)+1 from reservation where rv_ms_num = _ms_num),3,0)
     );
     
-    select _rv_num;
+    -- 전체 요금을 계산 : 성인수, 청소년수, 조조할인 여부를 알면 => 청소년 총 요금, 성인 총 요금을 계산
+ 
     -- 예약 테이블에 정보를 추가
     -- 조조할인이 적용되는지 여부를 _is_discount에 저장
-    set _is_discount = (select ms_discount from movie_schecule where ms_num = _ms_num);
+    set _is_discount = (select ms_discount from movie_schedule where ms_num = _ms_num);
     if _is_discount = 'Y' then
 		set _adult_total_price = (select pr_discount_price from price where pr_type='성인')*_adult_count;
         set _teenager_total_price = (select pr_discount_price from price where pr_type='청소년')*_teenager_count;
@@ -107,7 +146,7 @@ begin
         set _teenager_total_price = (select pr_price from price where pr_type='청소년')*_teenager_count;
     end if;
     
-    set _total_price = _adult_total_price + _teeanger_total_price;
+    set _total_price = _adult_total_price + _teenager_total_price;
 	-- 예약 테이블에 정보를 추가
     insert into reservation(rv_ms_num, rv_me_id, rv_adult, rv_teenager, rv_price)
     values(_rv_num, _ms_num, _id, _adult_count, _teenager_count, _total_price);
@@ -129,6 +168,10 @@ begin
         join movie_schedule on ms_sc_num = sc_num
         where ms_num = _ms_num and se_name = seat_name
         );
+        -- 예약좌석에 가격 번호를 연결하는데 있어서, 청소년 먼저하고, 성인을 하는것과
+        -- 성인을 먼저하고 청소년을 먼저하는것은 중요하지 않음
+        -- 성인먼저 좌석 순으로 배치하고, 이후에 청소년을 좌석순으로 배치
+        -- 성인수가 0이 아니면 주어진 좌석은 성인 좌석 
         if _adult_total_count != 0 then 
 			set _pr_num = (select pr_num from price where pr_type ='성인');
             set _adult_count = _adult_count -1;
@@ -141,12 +184,19 @@ begin
 	end loop;
 	close cur;
     -- 영화 스케쥴에 예약 가능좌석을 업데이트
-    
+    set _possible_seat = (select sc_total_seat - sum(rv_adult + rv_teenager)
+    from reservation 
+    join movie_schedule on ms_num = rv_ms_num 
+    join screen on ms_sc_num = sc_num 
+    where rv_ms_num = _ms_num);
+    update movie_schedule set ms_possible_seat = _possible_seat
+    where ms_num = _ms_num;
     -- 모든 영화 예매율을 업데이트
+	call update_reservation_rate();
     
 end //
 Delimiter ;
-call reservation_movie(1, 'admin', 1, 1, '[{"seat_name" : "A1"},{"seat_name" : "A2"}]');
+call reservation_movie(4, 'admin', 1, 1, '[{"seat_name" : "A1"},{"seat_name" : "A2"}]');
 /*
 { "속성명" : 값, "속성명" : 값}
 */
