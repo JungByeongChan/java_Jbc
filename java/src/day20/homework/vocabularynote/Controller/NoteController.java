@@ -8,7 +8,7 @@ public class NoteController {
 
 
 	private Scanner sc= new Scanner(System.in);
-	private Vocabularynote note = new Vocabularynote();
+	private Vocabularynote note = new Vocabularynote(null, 0);
 	
 	
 	public void run() {
