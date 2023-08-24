@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
+import kr.kh.app.dao.BoardDAO;
 import kr.kh.app.dao.MemberDAO;
 import kr.kh.app.vo.MemberVo;
 
@@ -53,7 +54,7 @@ public class MemberServiceImp implements MemberService {
 		}
 		//아이디가 일치하는 회원 정보를 가져옴
 		MemberVo dbMember = memberDao.selectMember(member.getMe_id());
-		// 회원정보가 있으면 아이디가 중복이라는 의미
+		// 회원정보가 있으면 탈퇴 불가능
 		if(dbMember == null) {
 			return false;
 		}
@@ -65,5 +66,9 @@ public class MemberServiceImp implements MemberService {
 		memberDao.deleteMember(member.getMe_id());
 		return true;
 	}
+
+
+
+	
 
 }

@@ -7,5 +7,5 @@ public interface MemberService {
 	boolean signup(MemberVo member);
 
 	boolean withdraw(MemberVo member);
-
+	
 }

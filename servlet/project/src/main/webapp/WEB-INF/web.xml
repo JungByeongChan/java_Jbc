@@ -39,4 +39,54 @@
     <servlet-name>Withdraw</servlet-name>
     <url-pattern>/withdraw</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Inquiry</display-name>
+    <servlet-name>Inquiry</servlet-name>
+    <servlet-class>kr.kh.app.controller.Inquiry</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Inquiry</servlet-name>
+    <url-pattern>/inquiry</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardInsert</display-name>
+    <servlet-name>BoardInsert</servlet-name>
+    <servlet-class>kr.kh.app.controller.BoardInsert</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardInsert</servlet-name>
+    <url-pattern>/board/insert</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardDetail</display-name>
+    <servlet-name>BoardDetail</servlet-name>
+    <servlet-class>kr.kh.app.controller.BoardDetail</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardDetail</servlet-name>
+    <url-pattern>/board/detail</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardDelete</display-name>
+    <servlet-name>BoardDelete</servlet-name>
+    <servlet-class>kr.kh.app.controller.BoardDelete</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardDelete</servlet-name>
+    <url-pattern>/board/delete</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BoardUpdate</display-name>
+    <servlet-name>BoardUpdate</servlet-name>
+    <servlet-class>kr.kh.app.controller.BoardUpdate</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardUpdate</servlet-name>
+    <url-pattern>/board/update</url-pattern>
+  </servlet-mapping>
 </web-app>
