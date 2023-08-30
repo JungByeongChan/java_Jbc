@@ -7,9 +7,13 @@
 	<title>스프링</title>
 </head>
 <body>
-<h1>
-	Test1입니다.  
-</h1>
-
+	<script type="text/javascript">
+	let msg = ${msg};
+	
+	if(msg != null | msg.msg != null){
+		alert(msg.msg);
+	}
+	location.href = '<c:url value="/"/>' + msg.url;
+	</script>
 </body>
 </html>

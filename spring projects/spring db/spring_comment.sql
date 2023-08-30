@@ -27,8 +27,8 @@ DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
   `co_num` int NOT NULL AUTO_INCREMENT,
   `co_contents` longtext,
-  `co_me_id` varchar(15) NOT NULL,
   `co_bo_num` int NOT NULL,
+  `co_me_id` varchar(15) NOT NULL,
   PRIMARY KEY (`co_num`),
   KEY `FK_member_TO_comment_1` (`co_me_id`),
   KEY `FK_co_bo_num_idx` (`co_bo_num`),
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-28 16:45:25
+-- Dump completed on 2023-08-28 16:45:19

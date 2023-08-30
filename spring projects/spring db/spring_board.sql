@@ -35,7 +35,7 @@ CREATE TABLE `board` (
   `bo_me_id` varchar(15) NOT NULL,
   `bo_up` int NOT NULL DEFAULT '0',
   `bo_down` int NOT NULL DEFAULT '0',
-  `bo_comment` int NOT NULL DEFAULT '0',
+  `bo_coment` int NOT NULL DEFAULT '0',
   `bo_bt_num` int NOT NULL,
   PRIMARY KEY (`bo_num`),
   KEY `FK_member_TO_board_1` (`bo_me_id`),
@@ -63,4 +63,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-28 16:45:25
+-- Dump completed on 2023-08-28 16:45:19
