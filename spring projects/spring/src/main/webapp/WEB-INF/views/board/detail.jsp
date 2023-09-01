@@ -41,6 +41,21 @@
 		<label>내용</label>
 		<div class="form-control" stryle="min-height:400px">${board.bo_contents}</div>
 	</div>
+	
+		<div class="form-group">
+			<c:choose>
+				<c:when test="${board.files.size() != 0 }"> <!-- length는 리스트에서 사용할수 없기 때문에 size사용 -->
+					<label>첨부파일</label>
+					<c:forEach items="${board.files }" var="file">
+						<a calss="form-control" href="<c:url value='/download${file.fi_name}'/>" download="${file.fi_ori_name }">${file.fi_ori_name }</a>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					<label>첨부파일 없음</label>
+				</c:otherwise>
+			</c:choose>
+		</div>
 	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
+	${board }
 </body>
 </html>

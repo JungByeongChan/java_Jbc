@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring.pagenation.Criteria;
 import kr.kh.spring.pagenation.PageMaker;
@@ -44,15 +45,15 @@ public class BoardController {
 		return "/board/insert";
 	}
 	@PostMapping("/insert")
-	public String insertPost(BoardVO board, HttpSession session, Model model) {
+	public String insertPost(BoardVO board, HttpSession session, Model model, MultipartFile[] fileList) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
 		Message msg;
-		if(boardService.insertBoard(board,user)) {
+		if(boardService.insertBoard(board,user, fileList)) {
 			msg = new Message("/board/list", "게시글을 등록했습니다.");
 		}else {
 			msg = new Message("/board/insert","게시글 등록 실패");
 		}
-		System.out.println(board);
+		
 		model.addAttribute("msg",msg);
 		return "message";
 	}
