@@ -17,75 +17,62 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@GetMapping("/test")
-	public String test() {
-		int count = memberService.count();
-		System.out.println(count);
-		return "redirect:/";
-	}
 	@GetMapping("/member/signup")
 	public String memberSignup() {
 		return "member/signup";
 	}
 	
-	@PostMapping("/member/signup")//@RequestMapping(value="/member/signup", method=RequestMethod.POST) ¿Í °°´Ù
+	@PostMapping("/member/signup") //@RequestMapping(value="/member/signup", method=RequestMethod.POST)
 	public String memberSignupPost(Model model, MemberVO member) {
-		String msg, url;
-		if(memberService.signup(member)) {
-			msg="È¸¿ø°¡ÀÔ ¼º°ø!";
-			url="/";
-		}else {
-			msg="È¸¿ø°¡ÀÔ ½ÇÆĞ!";
-			url="/member/signup";
-		}
+		String msg , url;
 		
-		System.out.println(member);
+		if(memberService.signup(member)) {
+			msg = "íšŒì›ê°€ì… ì„±ê³µ!";
+			url = "/";
+		}else {
+			msg = "íšŒì›ê°€ì… ì‹¤íŒ¨!";
+			url = "/member/signup"; 
+		}
 		model.addAttribute("url", url);
-		model.addAttribute("msg",msg);
+		model.addAttribute("msg", msg);
 		return "util/message";
 	}
-	
 	@GetMapping("/member/login")
 	public String memberLogin() {
-		
 		return "/member/login";
 	}
-	
 	@PostMapping("/member/login")
 	public String memberLoginPost(Model model, MemberVO member) {
-		String msg, url;
-		
+		String msg , url;
 		MemberVO user = memberService.login(member);
 		
-		if(user!=null) {
-			msg="·Î±×ÀÎ ¼º°ø!";
-			url="/";
+		if(user != null) {
+			msg = "ë¡œê·¸ì¸ ì„±ê³µ!";
+			url = "/";
 		}else {
-			msg="·Î±×ÀÎ ½ÇÆĞ!";
-			url="/member/login";
-			
-			
+			msg = "ë¡œê·¸ì¸ ì‹¤íŒ¨!";
+			url = "/member/login"; 
 		}
-		model.addAttribute("url",url);
-		model.addAttribute("msg",msg);
-		model.addAttribute("user",user);
-
-		
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+		model.addAttribute("user", user);
 		return "util/message";
-		
 	}
-		@GetMapping("/member/logout")
-		public String memberLogout(Model model, HttpSession session) {
-			
-			String msg = "·Î±×¾Æ¿ô ¼º°ø";
-			String url = "/";
-			session.removeAttribute("user");
-			
-			model.addAttribute("url",url);
-			model.addAttribute("msg",msg);
-			
-			
-			return "/util/message";
-		}
+	@GetMapping("/member/logout")
+	public String memberLogout(Model model, HttpSession session) {
+		String msg="ë¡œê·¸ì•„ì›ƒ ì„±ê³µ!" , url="/";
+		
+		session.removeAttribute("user");
+		
+		model.addAttribute("url", url);
+		model.addAttribute("msg", msg);
+
+		return "/util/message";
+	}
 }
+
+
+
+
+
 

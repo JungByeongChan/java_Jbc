@@ -3,7 +3,6 @@ package kr.kh.study.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 
 import kr.kh.study.dao.MemberDAO;
 import kr.kh.study.vo.MemberVO;
@@ -14,52 +13,45 @@ public class MemberServiceImp implements MemberService{
 
 	@Autowired
 	private MemberDAO memberDao;
-
+	
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-	
-	@Override
-	public int count() {
-		return memberDao.selectCountMember();
-	}
 
 	@Override
 	public boolean signup(MemberVO member) {
-		if(member == null 
-		|| member.getMe_id() == null 
-		|| member.getMe_pw() == null 
-		|| member.getMe_email() == null) {
+		if(member == null || 
+			member.getMe_id() == null || 
+			member.getMe_pw() == null || 
+			member.getMe_email() == null) {
 			return false;
 		}
-		//À¯È¿¼º°Ë»ç
+		//ìœ íš¨ì„± ê²€ì‚¬
 		if(!checkRegexMember(member)) {
 			return false;
 		}
-		//¾ÆÀÌµğ Áßº¹Ã¼Å©
-		//¾ÆÀÌµğ·Î È¸¿øÁ¤º¸¸¦ °¡Á®¿È
+		//ì•„ì´ë”” ì¤‘ë³µì²´í¬
+		//ì•„ì´ë””ë¡œ íšŒì›ì •ë³´ë¥¼ ê°€ì ¸ì˜´
 		MemberVO dbMember = memberDao.selectMember(member.getMe_id());
 		if(dbMember != null) {
 			return false;
 		}
-		//È¸¿ø°¡ÀÔÁøÇà
+		
+		//íšŒì›ê°€ì… ì§„í–‰
 		String encPw = passwordEncoder.encode(member.getMe_pw());
 		member.setMe_pw(encPw);
 		return memberDao.insertMember(member);
 	}
 
 	private boolean checkRegexMember(MemberVO member) {
-		// ÇÊ¿äÇÏ¸é À¯È¿¼º °Ë»ç ±¸Çö
-		return false;
+		//í•„ìš”í•˜ë©´ ìœ íš¨ì„± ê²€ì‚¬ ì½”ë“œë¥¼ êµ¬í˜„
+		return true;
 	}
 
 	@Override
 	public MemberVO login(MemberVO member) {
-		if(member == null 
-				|| member.getMe_id() == null 
-				|| member.getMe_pw() == null 
-				|| member.getMe_email() == null) {
-					return null;
-				}
+		if(member == null || member.getMe_id() == null || member.getMe_pw() == null) {
+			return null;
+		}
 		MemberVO user = memberDao.selectMember(member.getMe_id());
 		if(user == null) {
 			return null;
@@ -69,4 +61,10 @@ public class MemberServiceImp implements MemberService{
 		}
 		return null;
 	}
+
+	
 }
+
+
+
+
