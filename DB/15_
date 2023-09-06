@@ -36,7 +36,7 @@ WHERE
 UPDATE `OPTION` 
 SET 
     OP_AMOUNT = 5
-WHERE
+WHEREdash_board
     OP_PR_CODE = 'ABC001' AND OP_NAME = '무선';
 
 -- abc123 회원이 배송지를 다음과 같이 등록(배송지명 : 집, 주소 : 서울시 강남구 123번지, 

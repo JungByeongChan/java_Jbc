@@ -4,27 +4,34 @@ import lombok.Data;
 
 @Data
 public class Criteria {
-	private int page;//ÇöÀç ÆäÀÌÁö
-	private int perPageNum; // ÇÑ ÆäÀÌÁö¿¡¼­ ÄÁÅÙÃ÷ °³¼ö
+	private int page;//í˜„ì¬ í˜ì´ì§€
+	private int perPageNum; //í•œ í˜ì´ì§€ì—ì„œ ì»¨í…ì¸  ê°œìˆ˜
+	private String type;//ê²€ìƒ‰ íƒ€ì…
+	private String search;//ê²€ìƒ‰ì–´
 	
 	public Criteria() {
 		page =1;
 		perPageNum = 10;
+		type="0";// ì „ì²´ ê²€ìƒ‰
+		search=""; // ê¸°ë³¸ê²€ìƒ‰
 	}
 	
 	public Criteria(int page, int perPageNum) {
 		this.page = page;
 		this.perPageNum = perPageNum;
+		type="0";
+		search="";
 	}
-	//°Ô½Ã±Û ¸®½ºÆ®¿¡¼­ ÇöÀç ÆäÀÌÁö¿¡ ¸Â´Â °Ô½Ã±ÛÀ» °¡Á®¿À±â À§ÇÑ ½ÃÀÛ ¹øÁö
+	//ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ì—ì„œ í˜„ì¬ í˜ì´ì§€ì— ë§ëŠ” ê²Œì‹œê¸€ì„ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ ì‹œì‘ ë²ˆì§€ 
 	public int getPageStart() {
 		return (page - 1 ) * perPageNum;
+		
 	}
 	
 	public String getUrl(int page) {
-		return "?page="+ page; // + "&search=" + search
+		return "?page="+ page + "&type="+type + "&search="+search; // + "&search=" + search
 	}
 	public String getCurrentUrl() {
-		return "?page=" + page;	
+		return "?page=" + page + "&type="+type + "&search="+search;	
 	}
 }

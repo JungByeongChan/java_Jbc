@@ -4,34 +4,34 @@ import lombok.Data;
 
 @Data
 public class PageMaker {
-	private int startPage;//ÇöÀç ÆäÀÌÁö³×ÀÌ¼Ç¿¡¼­ ½ÃÀÛ ÆäÀÌÁö ¹øÈ£
-	private int endPage;//ÇöÀç ÆäÀÌÁö³×ÀÌ¼Ç¿¡¼­ ¸¶Áö¸· ÆäÀÌÁö ¹øÈ£
-	private boolean prev;//ÀÌÀü ¹öÆ° È°¼ºÈ­ ¿©ºÎ
-	private boolean next;//´ÙÀ½ ¹öÆ° È°¼ºÈ­ ¿©ºÎ
-	private int displayPageNum;//ÇÑ ÆäÀÌÁö³×ÀÌ¼Ç¿¡¼­ ÃÖ´ë ÆäÀÌÁö °³¼ö
-	private Criteria cri;//ÇöÀç ÆäÀÌÁö³×ÀÌ¼Ç¿¡¼­ ÇöÀç ÆäÀÌÁö ¹øÈ£
-	private int totalCount;//¸¶Áö¸·ÆäÀÌÁö³×ÀÌ¼Ç¿¡¼­ ¸¶Áö¸· ÆäÀÌÁö¹øÈ£¸¦ À§ÇÑ ÀüÃ¼ ÄÁÅÙÃ÷ °³¼ö
+	private int startPage;//í˜„ì¬ í˜ì´ì§€ë„¤ì´ì…˜ì—ì„œ ì‹œì‘ í˜ì´ì§€ ë²ˆí˜¸
+	private int endPage;//í˜„ì¬ í˜ì´ì§€ë„¤ì´ì…˜ì—ì„œ ë§ˆì§€ë§‰ í˜ì´ì§€ ë²ˆí˜¸
+	private boolean prev;//ì´ì „ ë²„íŠ¼ í™œì„±í™” ì—¬ë¶€
+	private boolean next;//ë‹¤ìŒ ë²„íŠ¼ í™œì„±í™” ì—¬ë¶€
+	private int displayPageNum; //í•œ í˜ì´ì§€ë„¤ì´ì…˜ì—ì„œ ìµœëŒ€ í˜ì´ì§€ ê°œìˆ˜ 
+	private Criteria cri;//í˜„ì¬ í˜ì´ì§€ë„¤ì´ì…˜ì—ì„œ í˜„ì¬ í˜ì´ì§€ ë²ˆí˜¸
+	private int totalCount;//ë§ˆì§€ë§‰í˜ì´ì§€ë„¤ì´ì…˜ì—ì„œ ë§ˆì§€ë§‰ í˜ì´ì§€ë²ˆí˜¸ë¥¼ ìœ„í•œ ì „ì²´ ì»¨í…ì¸  ê°œìˆ˜
 	
 	public void calculate() {
 		
-		endPage=(int)(Math.ceil(cri.getPage()/(double)displayPageNum)*displayPageNum);
+		endPage = (int)(Math.ceil(cri.getPage()/(double)displayPageNum)*displayPageNum);
 		
 		startPage = endPage - displayPageNum + 1;
-		//¸¶Áö¸· ÆäÀÌÁö³×ÀÌ¼Ç¿¡¼­ ¸¶Áö¸· ÆäÀÌÁö ¹øÈ£
+		
+		//ë§ˆì§€ë§‰ í˜ì´ì§€ë„¤ì´ì…˜ì—ì„œ ë§ˆì§€ë§‰ í˜ì´ì§€ ë²ˆí˜¸ 
 		int tmpEndPage = (int)(Math.ceil(totalCount/(double)cri.getPerPageNum()));
-		//ÇöÀç ÆäÀÌÁö°¡ ¸¶Áö¸· ÆäÀÌÁö³×ÀÌ¼ÇÀÌ¸é
+		//í˜„ì¬ í˜ì´ì§€ê°€ ë§ˆì§€ë§‰ í˜ì´ì§€ë„¤ì´ì…˜ì´ë©´
 		if(endPage > tmpEndPage) {
 			endPage = tmpEndPage;
 		}
-		//Ã¹¹øÂ° ÆäÀÌÁö³×ÀÌ¼ÇÀÌ¸é ÀÌÀü ¹öÆ° ºñÈ°¼ºÈ­
-		prev = startPage == 1? false : true;
+		//ì²«ë²ˆì§¸ í˜ì´ì§€ë„¤ì´ì…˜ì´ë©´ ì´ì „ ë²„íŠ¼ ë¹„í™œì„±í™”
+		prev = startPage == 1 ? false : true;
 		
-		//¸¶Áö¸·ÆäÀÌÁö³×ÀÌ¼ÇÀÌ¸é ´ÙÀ½ ¹öÆ° ºñÈ°¼ºÈ­
+		//ë§ˆì§€ë§‰í˜ì´ì§€ë„¤ì´ì…˜ì´ë©´ ë‹¤ìŒ ë²„íŠ¼ ë¹„í™œì„±í™” 
 		next = endPage == tmpEndPage ? false : true;
 	}
 
 	public PageMaker(int displayPageNum, Criteria cri, int totalCount) {
-		
 		this.displayPageNum = displayPageNum;
 		this.cri = cri;
 		this.totalCount = totalCount;

@@ -11,8 +11,8 @@ import org.springframework.util.FileCopyUtils;
 public class UploadFileUtils {
 
 	/***
-	 * ÆÄÀÏÀ» uploadPath¿¡ º¹»çÇÑ ÈÄ º¹»çÇÑ ÆÄÀÏ°æ·Î¿Í ÀÌ¸§À» ÇÕÃÄ¼­ ¹®ÀÚ¿­·Î ¹İÈ¯ÇÏ´Â ¸Ş¼­µå
-	 * ÆÄÀÏÀ» ¾÷·ÎµåÇÑ ³¯Â¥¿¡ ¸ÂÃç¼­ ³â/¿ù/ÀÏ Æú´õ°¡ »ı¼ºµÇ°í ±× ¾È¿¡ ¾÷·Îµå
+	 * íŒŒì¼ì„ uploadPathì— ë³µì‚¬í•œ í›„ ë³µì‚¬í•œ íŒŒì¼ê²½ë¡œì™€ ì´ë¦„ì„ í•©ì³ì„œ ë¬¸ìì—´ë¡œ ë°˜í™˜í•˜ëŠ” ë©”ì„œë“œ
+	 * íŒŒì¼ì„ ì—…ë¡œë“œí•œ ë‚ ì§œì— ë§ì¶°ì„œ ë…„/ì›”/ì¼ í´ë”ê°€ ìƒì„±ë˜ê³  ê·¸ ì•ˆì— ì—…ë¡œë“œ 
 	 * @param uploadPath
 	 * @param originalFileName
 	 * @param fileData
@@ -20,58 +20,60 @@ public class UploadFileUtils {
 	 * @throws IOException 
 	 */
 	public static String uploadFile(String uploadPath, String originalFileName, byte[] fileData) throws IOException {
+	
+		//ê°™ì€ íŒŒì¼ëª…ì„ê°€ì§€ëŠ” íŒŒì¼ì„ ì—…ë¡œë“œí•  ë•Œ ë®ì–´ì“°ê¸°ê°€ ë˜ì§€ ì•Šê²Œ ì²˜ë¦¬
+		UUID uuid = UUID.randomUUID();
+		String savedFileName = uuid.toString() + "_" + originalFileName; //8-4-4-4-12_íŒŒì¼ëª…
+	
+		//í•œ í´ë”ì— íŒŒì¼ì´ ëª°ë¦¬ì§€ ì•Šê²Œ ë‚ ì§œë³„ë¡œ ì—…ë¡œë“œ íŒŒì¼ì„ ê´€ë¦¬ 
+		//2023/09/01
+		String savedPath = calcPath(uploadPath);//ì—…ë¡œë“œ ë‚ ì§œë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë…„/ì›”/ì¼ í´ë”ê°€ ì—†ìœ¼ë©´ ìƒì„±í•˜ê³  ìƒì„±ëœ ê²½ë¡œë¥¼ ë°˜í™˜
 		
-		//°°Àº ÆÄÀÏ¸íÀ» °¡Áö´Â ÆÄÀÏÀ» ¾÷·ÎµåÇÒ ¶§ µ¤¾î¾²±â°¡ µÇÁö ¾Ê°Ô Ã³¸®
-		UUID uuid = UUID.randomUUID();//¹ü¿ë°íÀ¯½Äº°ÀÚ¶ó°íµµ ºÎ¸§ 
-		String savedFileName = uuid.toString() + "_" + originalFileName; // 8-4-4-4-12(_ÆÄÀÏ¸í)
-		
-		//ÇÑ Æú´õ¿¡ ÆÄÀÏÀÌ ¸ô¸®Áö ¾Ê°Ô ³¯Â¥º°·Î ¾÷·Îµå ÆÄÀÏÀ» °ü¸®
-		// 2023/09/01
-		String savedPath = calcPath(uploadPath);// ¾÷·Îµå ³¯Â¥¸¦ ±âÁØÀ¸·Î ³â/¿ù/ÀÏ Æú´õ°¡ ¾øÀ¸¸é »ı¼ºÇÏ°í »ı¼ºµÈ °æ·Î¸¦ ¹İÈ¯
-		
-		//ÆÄÀÏÀ» º¹»ç
+		//íŒŒì¼ì„ ë³µì‚¬
+		//ë¹ˆ íŒŒì¼ì„ ìƒì„±
 		File target = new File(uploadPath + savedPath, savedFileName);
 		FileCopyUtils.copy(fileData, target);
-		
-		return uploadFileName(uploadPath,savedPath ,savedFileName);
+		return uploadFileName(savedPath, savedFileName);
 	}
-
-	private static String uploadFileName(String uploadPath, String savedPath, String savedFileName) {
+	private static String uploadFileName(String savedPath, String savedFileName) {
 		String fileName = savedPath + File.separator + savedFileName;
-		return fileName.replace(File.separator, "/");//ÆÄÀÏÀÌ ¹®ÀÚ¿­ÀÌ±â ¶§¹®¿¡ "/"·Î ¹®ÀÚ¿­Ã³¸®¸¦ ÇØÁÖ¾î¾ßÇÔ
+		return fileName.replace(File.separator, "/");
 	}
-
 	/***
-	 * uploadPath¿¡ ±âÁØ ³¯Â¥¿¡ ¸Â´Â ³â/¿ù/ÀÏ Æú´õ°¡ ¾øÀ¸¸é »ı¼ºÇÏ°í, Æú´õÀÇ °æ·Î¸¦ ¹İÈ¯ÇÏ´Â ¸Ş¼­µå
-	 * @param uploadPath ³â/¿ù/ÀÏ Æú´õ¸¦ ¸¸µé ºÎ¸ğ Æú´õ
-	 * @return ±âÁØ ³¯Â¥ÀÇ ³â/¿ù/ÀÏ Æú´õ °æ·Î
+	 * uploadPathì— ê¸°ì¤€ ë‚ ì§œì— ë§ëŠ” ë…„/ì›”/ì¼ í´ë”ê°€ ì—†ìœ¼ë©´ ìƒì„±í•˜ê³ , í´ë”ì˜ ê²½ë¡œë¥¼ ë°˜í™˜í•˜ëŠ” ë©”ì„œë“œ 
+	 * @param uploadPath ë…„/ì›”/ì¼ í´ë”ë¥¼ ë§Œë“¤ ë¶€ëª¨ í´ë”
+	 * @return ê¸°ì¤€ ë‚ ì§œì˜ ë…„/ì›”/ì¼ í´ë” ê²½ë¡œ
 	 */
 	private static String calcPath(String uploadPath) {
 		Calendar cal = Calendar.getInstance();
 		// \\2023
-		String yearPath = File.separator + cal.get(Calendar.YEAR);//separator ¿î¿µÃ¼Á¦¿¡ ¸ÂÃç¼­ º¯ÇüÇØÁÖ´Â ÇÔ¼ö
-		// \\2023\09
+		String yearPath = File.separator + cal.get(Calendar.YEAR);
+		// \\2023\\09
 		String monthPath = yearPath + File.separator + new DecimalFormat("00").format(cal.get(Calendar.MONTH)+1);
-		//deciamlformat Àº ºñ¾îÀÖ´Â ÀÚ¸®¸¦ Ã¤¿öÁÖ´Â°Í ÀÌ °æ¿ì 03¿ùÀÇÃ³·³ 0ÀÌ ºñ¾îÀÖ´Â°æ¿ì
+		// \\2023\\09\\01
+		String datePath = monthPath + File.separator + new DecimalFormat("00").format(cal.get(Calendar.DATE)); 
 		
-		// \\ 2023\\09\\01
-		String datePath = monthPath + File.separator + new DecimalFormat("00").format(cal.get(Calendar.DATE));
-		
-		//Æú´õ¸¦ »ı¼º
+		//í´ë”ë¥¼ ìƒì„±
 		makeDir(uploadPath, yearPath, monthPath, datePath);
-				return datePath;
+		
+		return datePath;
 	}
-
-	private static void makeDir(String uploadPath, String... paths ) {
-		// datePath°¡ ÀÌ¹Ì Á¸ÀçÇÏ¸é ÀÌ¹Ì Æú´õ°¡ ÀÖ´Â °æ¿ìÀÌ¹Ç·Î Æú´õ¸¦ ´õ ¸¸µé ÇÊ¿ä°¡ ¾øÀ½
-		if(new File(uploadPath + paths[paths.length -1]).exists()) {
-		 return;	
+	private static void makeDir(String uploadPath, String... paths) {
+		//datePathê°€ ì´ë¯¸ ì¡´ì¬í•˜ë©´ ì´ë¯¸ í´ë”ê°€ ìˆëŠ” ê²½ìš°ì´ë¯€ë¡œ í´ë”ë¥¼ ë” ë§Œë“¤ í•„ìš”ê°€ ì—†ìŒ
+		if(new File(uploadPath + paths[paths.length-1]).exists()) {
+			return;
 		}
 		for(String path : paths) {
 			File dir = new File(uploadPath + path);
 			if(!dir.exists()) {
-				dir.mkdir(); // mkdirÀº Æú´õ¸¦ ¸¸µå´Â ¸Ş¼Òµå
+				dir.mkdir();
 			}
+		}
+	}
+	public static void deleteFile(String uploadPath, String fi_name) {
+		File file = new File(uploadPath+fi_name);
+		if(file.exists()) {
+			file.delete();
 		}
 	}
 }

@@ -6,11 +6,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import kr.kh.spring.pagenation.Criteria;
 import kr.kh.spring.vo.BoardVO;
+import kr.kh.spring.vo.LikeVO;
 import kr.kh.spring.vo.MemberVO;
 
 public interface BoardService {
 
-	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] fileList);
+	boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files);
 
 	List<BoardVO> getBoardList(Criteria cri);
 
@@ -20,4 +21,11 @@ public interface BoardService {
 
 	void updateViews(Integer bo_num);
 
+	boolean updateBoard(BoardVO board, MultipartFile[] files, Integer[] delFiles, MemberVO user);
+
+	boolean deleteBoard(Integer bo_num, MemberVO user);
+
+	int like(LikeVO likeVo);
+
+	LikeVO getBoardLike(Integer bo_num, MemberVO user);
 }

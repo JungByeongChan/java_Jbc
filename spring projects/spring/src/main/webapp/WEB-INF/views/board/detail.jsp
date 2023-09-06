@@ -33,8 +33,8 @@
 	</c:if>
 	<div class="form-group clearfix">
 		
-			<button class="btn btn-outline-primary btn-up col-6 float-left">추천(${board.bo_up })</button>
-			<button class="btn btn-outline-danger btn-up col-6 float-right">비추천(${board.bo_down })</button>
+			<button class="btn btn-like btn<c:if test="${like.li_state != 1 }">-outline</c:if>-primary btn-up col-6 float-left">추천(<span class="text-up">${board.bo_up }</span>)</button>
+			<button class="btn btn-like btn<c:if test="${like.li_state != -1 }">-outline</c:if>-danger btn-down col-6 float-right">비추천(<span class="text-down">${board.bo_down }</span>)</button>
 		
 	</div>
 	<div class="form-group">
@@ -44,9 +44,9 @@
 	
 		<div class="form-group">
 			<c:choose>
-				<c:when test="${board.files.size() != 0 }"> <!-- length는 리스트에서 사용할수 없기 때문에 size사용 -->
+				<c:when test="${board.fileVoList.size() != 0 }"> <!-- length는 리스트에서 사용할수 없기 때문에 size사용 -->
 					<label>첨부파일</label>
-					<c:forEach items="${board.files }" var="file">
+					<c:forEach items="${board.fileVoList }" var="file">
 						<a calss="form-control" href="<c:url value='/download${file.fi_name}'/>" download="${file.fi_ori_name }">${file.fi_ori_name }</a>
 					</c:forEach>
 				</c:when>
@@ -56,6 +56,115 @@
 			</c:choose>
 		</div>
 	<a href="<c:url value='/board/list${cri.currentUrl }'/>" class="btn btn-outline-primary">목록으로</a>
-	${board }
+	<a href="<c:url value='/board/insert?bo_ori_num=${board.bo_num}'/>" class="btn btn-outline-success">답글</a>
+	<c:if test="${user.me_id == board.bo_me_id}">
+		<a href="<c:url value='/board/update?bo_num=${board.bo_num}'/>" class="btn btn-outline-warning">수정</a>
+		<a href="<c:url value='/board/delete?bo_num=${board.bo_num}'/>" class="btn btn-outline-danger">삭제</a>
+	</c:if>
+	
+	<div class="comment-container mt-5">
+		<!-- 댓글 입력창 -->
+		<div class="input-group mb-3">
+		    <textarea class="form-control" placeholder="댓글" name="co_contents"></textarea>
+	    	<div class="input-group-append">
+		    	<button class="btn btn-outline-success btn-comment-insert">등록</button>
+		 	 </div>
+		</div>
+		
+		<!-- 댓글 목록창 -->
+		
+		<!-- 댓글 페이지네이션 -->
+	
+	</div>
+	<!-- 추천 기능 자바스크립트 -->
+	<script type="text/javascript">
+		//추천 버튼을 클릭했을 때 콘솔창에 추천이라고 출력 
+		$('.btn-like').click(function(){
+			if('${user.me_id}' == ''){
+				//alert('로그인한 회원만 이용이 가능합니다.')
+				if(confirm('로그인 화면으로 이동하시겠습니까?')){
+					location.href = '<c:url value="/member/login"/>'
+				}
+				return;
+			}
+			let li_state = $(this).hasClass('btn-up')? 1 : -1;
+			let data = {
+				li_me_id : '${user.me_id}',
+				li_bo_num: '${board.bo_num}',
+				li_state : li_state
+			};
+			ajaxJsonToJson(false, 'post', '/board/like', data, (data)=>{
+				if(data.res == 1){
+					alert('추천했습니다.');		
+				}else if(data.res == -1){
+					alert('비추천했습니다.');
+				}else if(data.res == 0){
+					if(li_state == 1){
+						alert('추천을 취소했습니다');
+					}else{
+						alert('비추천을 취소했습니다.');
+					}
+				}
+				displayLikeBtn(data.res);
+				$('.text-up').text(data.board.bo_up);
+				$('.text-down').text(data.board.bo_down);
+			})
+		})
+		
+		function displayLikeBtn(li_state){
+			let $upBtn = $('.btn-up');
+			let $downBtn = $('.btn-down');
+			
+			$upBtn.removeClass('btn-primary').addClass('btn-outline-primary');
+			$downBtn.removeClass('btn-danger').addClass('btn-outline-danger');
+			
+			if(li_state == 1){
+				$upBtn.addClass('btn-primary').removeClass('btn-outline-primary');
+			}else if(li_state == -1){
+				$downBtn.addClass('btn-danger').removeClass('btn-outline-danger');
+			}
+		}
+		
+		
+	</script>
+	
+	<!-- 댓글 기능 자바스크립트 -->
+	<script type="text/javascript">
+		$('[name=co_contents]').focus(function(){
+			if('${user.me_id}' == ''){
+				if(confirm('댓글을 작성하려면 로그인 해야합니다. 로그인을 하시겟습니까?')){
+					location.href = '<c:url value="/member/login"/>';
+				}
+				$(this).blur();
+				return;
+			}
+		})
+		$('.btn-comment-insert').click(()=>{
+			if('${user.me_id}' == ''){
+				if(confirm('댓글을 작성하려면 로그인 해야합니다. 로그인을 하시겟습니까?')){
+					location.href = '<c:url value="/member/login"/>';
+				}
+				return;
+			}
+			let co_contents = $('[name=co_contents]').val();
+			if(co_contents == ''){
+				alert('내용을 입력하시오')
+				return;
+			}
+			let comment = {
+					co_contents : co_contents,
+					co_bo_num : '${board.bo_num}',
+					co_me_id : '${user.me_id}'
+			}
+			ajaxJsonToJson(false,'post','/comment/insert', comment,(data)=>{
+				if(data.res){
+					alert('댓글이 등록했습니다.');
+					$('[name=co_contents]').val('');
+				}else{
+					alert('댓글을 등록하지 못했습니다.');
+				}
+			});
+		});
+	</script>
 </body>
 </html>
