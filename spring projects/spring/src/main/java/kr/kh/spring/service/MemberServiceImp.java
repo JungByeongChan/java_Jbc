@@ -69,6 +69,17 @@ public class MemberServiceImp implements MemberService {
 		}
 		return null;
 	}
+	@Override
+	public void updateMemberSession(MemberVO user) {
+		if(user == null) {
+			return;
+		}
+		memberDao.updateMemberSession(user);
+	}
 
-	
+	@Override
+	public MemberVO getMemberBySession(String session_id) {
+		
+		return memberDao.selectMemberBySession(session_id);
+	}
 }
