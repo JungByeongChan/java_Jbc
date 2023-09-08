@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.kh.spring.dao.BoardDAO;
 import kr.kh.spring.pagenation.Criteria;
 import kr.kh.spring.util.UploadFileUtils;
+import kr.kh.spring.vo.BoardTypeVO;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
 import kr.kh.spring.vo.LikeVO;
@@ -203,5 +204,74 @@ public class BoardServiceImp implements BoardService {
 			return null;
 		}
 		return boardDao.selectLike(bo_num, user.getMe_id());
+	}
+
+	@Override
+	public List<BoardTypeVO> getBoardTypeList() {
+		
+		return boardDao.selectBoardTypeList();
+	}
+
+	@Override
+	public boolean insertBoardType(BoardTypeVO boardType) {
+		if(boardType == null || boardType.getBt_title() == null || boardType.getBt_authority() == null) {
+			return false;
+		}
+		//게시판명이 중복되는걸 방지하기 위해
+		try {
+			boolean res = boardDao.insertBoardType(boardType);
+			if(!res) {
+				return false;
+			}
+			
+		} catch (Exception e) {
+			return false;
+		}
+		switch (boardType.getBt_authority()) {
+		case "USER":
+			boardDao.insertBoardAuthority(boardType.getBt_num(),"USER");
+		case "ADMIN" :
+			boardDao.insertBoardAuthority(boardType.getBt_num(),"ADMIN");
+			
+			break;
+
+		}
+		return true;
+	}
+
+	@Override
+	public boolean deleteBoardType(BoardTypeVO boardType) {
+		if(boardType == null) {
+			return false;
+		}
+		//등록된 게시글이 있는지 확인
+		int count = boardDao.selectBoardCountByBoardType(boardType.getBt_num());
+		//있으면 삭제 실패
+		if(count != 0) {
+			return false;
+		}
+		//등록된 게시판 타입이 몇개 있는지 확인
+		int btCount = boardDao.selectBoardTypeCount();
+		
+		//1개 있으면 삭제 실패
+		if(btCount == 1 ) {
+			return false;
+		}
+		
+		//게시판 타입을 삭제
+		return boardDao.deleteBoardType(boardType.getBt_num());
+	}
+
+	@Override
+	public boolean updateBoardType(BoardTypeVO boardType) {
+		if(boardType == null || boardType.getBt_title() == null) {
+			return false;
+		}
+		try {
+		return boardDao.updateBoardType(boardType);
+		}catch(Exception e){
+			e.printStackTrace();
+			return false;
+		}
 	}
 }

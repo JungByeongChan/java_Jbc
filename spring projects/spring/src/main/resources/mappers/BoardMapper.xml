@@ -18,6 +18,15 @@
 		<result property="bo_reg_date" column="bo_reg_date"/>
 		<collection property="fileVoList" ofType="kr.kh.spring.vo.FileVO" column="bo_num" select="selectFileList"/>
 	</resultMap>
+	<resultMap type="kr.kh.spring.vo.BoardTypeVO" id="BoardTypeVO">
+	 <id property="bt_num" column="bt_num"/>
+	 <result property="bt_title" column="bt_title"/>
+	 <collection 
+	 	property="baList" 
+	 	ofType="kr.kh.spring.vo.BoardAuthorityVO" 
+	 	column="bt_num" 
+	 	select="selectBoardAuthorityList"/>
+	 </resultMap>
 
 
 	<insert id="insertBoard" useGeneratedKeys="true" keyProperty="board.bo_num" >
@@ -119,5 +128,34 @@
 		where
 			bo_num = #{bo_num}
 	</update>
-	
+	<select id="selectBoardTypeList" resultMap="BoardTypeVO">
+		select * from board_type
+	</select>
+	<select id="selectBoardAuthorityList" resultType="kr.kh.spring.vo.BoardAuthorityVO">
+		select * from board_authority where ba_bt_num = #{bt_num}
+	</select>
+	<insert id="insertBoardType" useGeneratedKeys="true" keyProperty="bt.bt_num">
+		insert into board_type(bt_title) values(#{bt.bt_title})
+	</insert>
+	<insert id="insertBoardAuthority">
+		insert into board_authority(ba_bt_num, ba_authority)
+		values(#{ba_bt_num},#{ba_authority})
+	</insert>
+	<select id="selectBoardCountByBoardType" resultType="int">
+		select count(*) from board where bo_bt_num = ${bo_bt_num}
+	</select>
+	<select id="selectBoardTypeCount" resultType="int">
+		select count(*) from board_type
+	</select>
+	<delete id="deleteBoardType">
+		delete from board_type where bt_num = #{bt_num}
+	</delete>
+	<update id="updateBoardType">
+		update board_type
+		set
+			bt_title = #{bt.bt_title}
+		where
+			bt_num = #{bt.bt_num}
+			
+	</update>
 </mapper>
