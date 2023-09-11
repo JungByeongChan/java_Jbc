@@ -10,10 +10,18 @@
 <body>
 	<h1>게시글 등록</h1>
 	<form action="<c:url value='/board/insert'/>" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="bo_ori_num" value="${bo_ori_num }">
+		<input type="hidden" name="bo_ori_num" value="${bo_ori_num}">
+			<div class="form-group">
+			<label>게시판명</label>
+			<select class="form-control" name="bo_bt_num">
+				<c:forEach items="${typeList}" var="type">
+					<option value="${type.bt_num }">${type.bt_title }</option>
+				</c:forEach>
+			</select>
+		</div>
 		<div class="form-group">
 			<label>제목</label>
-			<input type="text" class="form-control" name ="bo_title">
+			<input type="text" class="form-control" name="bo_title">
 		</div>
 		<div class="form-group">
 			<label>작성자</label>
@@ -33,6 +41,13 @@
 	</form>
 	
 	<script>
+	alert(${typeList.size());	
+	if(${typeList.size()==0){
+			alert('작성 가능한 게시판이 없습니다');
+			location.href = '<c:url value="/board/list"/>'
+		}
+		}
+	
       $('#summernote').summernote({
         placeholder: '내용을 입력하시오',
         tabsize: 2,

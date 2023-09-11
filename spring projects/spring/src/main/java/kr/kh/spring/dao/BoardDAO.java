@@ -56,5 +56,7 @@ public interface BoardDAO {
 
 	boolean updateBoardType(@Param("bt")BoardTypeVO boardType);
 
+	List<BoardTypeVO> selectBoardTypeListByRole(@Param("me_role")String me_role);
+
 
 }
