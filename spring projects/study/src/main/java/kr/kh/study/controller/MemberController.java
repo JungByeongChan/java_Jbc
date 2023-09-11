@@ -49,6 +49,7 @@ public class MemberController {
 		if(user != null) {
 			msg = "로그인 성공!";
 			url = "/";
+			user.setAutoLogin(member.isAutoLogin());//boolean은 get 사용불가 is사용
 		}else {
 			msg = "로그인 실패!";
 			url = "/member/login"; 
