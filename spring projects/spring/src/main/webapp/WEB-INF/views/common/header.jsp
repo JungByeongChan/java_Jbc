@@ -25,7 +25,7 @@
     </c:if>
       <li class="nav-item">
 	      <a class="nav-link" href="<c:url value='/board/list'/>">게시판</a>
-	    </li>
+	   </li>
 	    
 	    
 	    <!-- Dropdown -->
@@ -39,5 +39,9 @@
           </div>
 	    </li>
     </c:if>
+	    <li class="nav-item">
+		     <a class="nav-link" href="<c:url value='/mail'/>">메일보내기 테스트</a>
+		</li>
+    
   </ul>
 </nav>
