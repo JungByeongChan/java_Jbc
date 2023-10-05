@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="container">
+
+
+	</div>
+	<script type="text/babel">
+		const container = document.getElementById('container');
+		
+		function App(){
+			let [text, setText] = React.useState("내용을 입력하시오");
+			function onChange(event){
+				//event.garget.value를 통해 input 태그의 내용이 바뀔 때 입력된 내용을 가져올 수 있다.
+				console.log(event.target.value);
+				// setText(text != "" ? setText(event.target.value) : "내용을 입력하시오");
+				let value = event.target.value;
+				if(value != ""){
+				setText(event.target.value);
+				}else{
+				setText("내용을 입력하시오");
+				}
+
+			}
+			return (
+			<div>	
+				<input type="text" onChange={onChange}/>
+				<h1>{text}</h1>
+			</div>
+			);
+		}
+		ReactDOM.render(<App/>, container);
+
+	</script>
+
+
+</body>
+</html>

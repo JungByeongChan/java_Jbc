@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+	<style>
+			.btn-down, .btn-up{
+				width: 30px; height: 30px; line-height: 26px; background-color: #fff;
+				border-radius: 5px; font-size: 20px; cursor: pointer; box-sizing: border-box;
+			}
+			.page{
+				line-height: 30px; display: inline-block;
+				margin:0 5px;
+			}
+	</style>
+</head>
+<body>
+	<div id="container">
+		
+	</div>
+
+	<script type="text/babel">
+	const asd = document.getElementById('container');
+
+	
+	function Aaaa(){
+		
+
+		
+		let [i, setI] = React.useState(1);
+		const maxI = 13;
+		
+		function onClick1(){
+			// setI(i - 1 < 1 ? maxI : i - 1);
+			if(i - 1 < 1){
+				setI(maxI);
+			}else{
+				setI(i - 1);
+			}
+		}
+		
+		function onClick2(){
+			// setI(i + 1 > maxI ? 1 : i + 1);
+			if(i + 1 > maxI){
+				setI(1);
+			}else{
+				setI(i + 1);
+			}
+		}
+		return (
+			<div>	
+				
+				<button onClick={onClick1} className="btn-down">&lt;</button>
+				<span className="page">{i}/{maxI}</span>
+				<button onClick={onClick2} className="btn-up">&gt;</button>
+				</div>
+			);
+	}
+	ReactDOM.render(<Aaaa/>,asd);
+	
+	</script>
+
+</body>
+</html>

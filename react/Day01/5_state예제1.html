@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+	<script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+	<div id="container">
+
+	</div>
+
+	<script type="text/babel">
+	const asd = document.getElementById('container');
+
+	
+	function Aaaa(){
+		//React.useState(초기값) : 0번지에 값을, 1번지에는 setter 함수를 생성하여 반환
+		
+		let q = React.useState(0);
+		console.log(q)
+		
+		// let q = React.useState(0);
+		// let i = q[0];
+		// let setI = q[1];
+		
+
+
+		let [i, setI] = React.useState(0);
+		console.log(i)
+
+		function onClick(){
+			setI(i + 1);
+		}
+		return (
+			<div>	
+				<h1>클릭 수 : {i}</h1>
+				<button onClick={onClick}>버튼</button>
+				</div>
+			);
+	}
+	ReactDOM.render(<Aaaa/>,asd);
+	
+	</script>
+
+</body>
+</html>
