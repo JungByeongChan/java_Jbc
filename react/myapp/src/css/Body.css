@@ -1,0 +1,6 @@
+
+.body{
+	min-height: calc(100vh - 56px - 360px); 
+	background-color: white;
+	
+}
